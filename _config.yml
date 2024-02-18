@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Make Each Day Count # the main title
+title: Mingyu Blog # the main title
 
-tagline: Mingyu An # it will display as the sub-title
+tagline: Make each day count. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Blog of Mingyu An, dedicated to sharing my thoughts and experiences in my life.
