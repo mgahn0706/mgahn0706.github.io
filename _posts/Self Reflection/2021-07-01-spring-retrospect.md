@@ -5,7 +5,7 @@ share: "true"
 github_title: 2021-07-01-spring-retrospect
 title: 2021년 봄학기를 마치며
 date: 2021-07-01
-categories: "[Self-reflection]"
+categories: Self Reflection
 ---
   취미로 만들고 있는 고인물능력시험 업로드 용으로 사용하는 티스토리지만, 마땅히 내 생각을 정리할 곳도 없고 어차피 많이 찾아오지는 않을 것 같아 여기에 1학기 review를 적어보고자 한다. 이런거라도 안하면 양심에 찔려서 ㅎㅎ
 
