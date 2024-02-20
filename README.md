@@ -1,6 +1,6 @@
-# Blog
+# Mingyu Blog
 
-[![Blog site](https://mgahn0706.github.io)][gem]
+[Blog Site](mgahn0706.github.io)
 
 Recording Lecture Notes, insights, and some shower thoughts.
 
