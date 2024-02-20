@@ -7,7 +7,9 @@ share: "true"
 github_title: 2024-02-19-basics-about-data-structure
 title: 0. Basics about Data Structure
 date: 2023-04-25
-categories: "[Lecture Notes, Data Structure]"
+categories:
+  - Lecture Notes
+  - Data Structure
 ---
 
 # Basic forms of Allocation
