@@ -6,7 +6,9 @@ share: "true"
 github_title: 2023-12-22-what-is-ui-ux
 title: What is UI, UX?
 date: 2023-12-22
-categories: "[Development, HCI]"
+categories:
+  - Development
+  - HCI
 ---
 ## Introduction
 ---
