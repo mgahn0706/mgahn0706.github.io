@@ -5,7 +5,9 @@ share: "true"
 github_title: 2022-04-25-fall-retrospect
 title: 2021년 가을학기를 마치며
 date: 2022-04-25
-categories: "[Self Reflection, Semester]"
+categories:
+  - Self Reflection
+  - Semester
 ---
 
 
