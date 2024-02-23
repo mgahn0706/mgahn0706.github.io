@@ -26,7 +26,7 @@ categories:
 
 디자인의 요소에는 점/선/면 이 있으며 이 요소는 어떠한 ‘위계’를 가집니다.
 
-![hierarchy.png](../../hierarchy.png)
+![hierarchy.png](/assets/img/posts/hierarchy.png)
 위 그림에서 알 수 있듯이, 선에서 현실 세계의 표현으로 갈수록 눈에 더 잘 띄게 됩니다. 이것으로 인해 시각적인 위계가 생기게 되는 것이죠.
 
 동그랗게 그은 선보다는 면이, 면보다는 입체감을 준 면이 더 눈에 잘 띈다는 의미입니다.
@@ -45,7 +45,7 @@ Quick Filter 개수와 동일한 색깔을 가지지만, 면적 상 create 버�
 
 만약 토스처럼 3d 그래픽으로 스토리나 에픽 아이콘을 만들었다면 위계상 이상해질 것 같네요.
 
-![modu-example.png](../../modu-example.png)
+![modu-example.png](assets/img/posts/modu-example.png)
 
 모두싸인의 내 문서함도 비슷한 기조를 가집니다.
 
