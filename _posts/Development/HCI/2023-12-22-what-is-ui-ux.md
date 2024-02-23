@@ -2,6 +2,7 @@
 tags:
   - ui
   - ux
+  - hci
 share: "true"
 github_title: 2023-12-22-what-is-ui-ux
 title: What is UI, UX?
@@ -10,7 +11,7 @@ categories:
   - Development
   - HCI
 ---
-## Introduction
+### Introduction
 ---
 
 UI/UX는 중요합니다. 재직 중인 회사에서 작성하는 PR 본문에는 ‘UI 개선, UX 개선’ 이라는 표현을 많이 쓰고 있죠. 우리는 좋은 UX를 위해 노력하는 엔지니어입니다. 

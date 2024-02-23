@@ -25,7 +25,7 @@ categories:
 ---
 ### What is Affordance?
 
-> [!info] An affordance is what an object can do (but not feature!)
+>  An affordance is what an object can do (but not feature!)
 
 어포던스는 어떤 물체가 ’할 수 있는 것’입니다. 우리가 여태까지 써왔던 ‘어포던스’의 용례와는 많이 다르죠.
 
