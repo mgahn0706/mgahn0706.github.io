@@ -2,7 +2,7 @@
 tags:
   - affordance
 share: "true"
-github_title: YYYY-MM-DD-your-title
+github_title: 2024-04-01-affordance-psychology
 title: 어포던스와 심리학
 date: 2023-04-25
 categories:
