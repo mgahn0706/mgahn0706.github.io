@@ -48,7 +48,7 @@ signifier는 ‘확실하거나’ ‘모호할’ 수 있습니다.
 → 어포던스가 높다 = 사용자에게 이 친구가 **무엇을 하는 친구**인지 잘 설명된다.
 
 ### Example of Obvious / Subtle Affordance
-![Pasted image 20240220132615.png](/assets/img/posts/Pasted%20image%2020240220132615.png)
+![/assets/img/posts/Pasted image 20240220132615.png](../../../assets/img/posts/Pasted%20image%2020240220132615.png)
 
 왼쪽의 시계는 어포던스가 모호합니다. 어떤 곳을 눌러야 하는지도 모르겠고, 위에 있는 버튼이 무엇을 하는지 사용자가 알기 어렵습니다.
 
