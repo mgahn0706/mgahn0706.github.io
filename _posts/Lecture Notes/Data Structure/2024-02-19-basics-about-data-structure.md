@@ -6,7 +6,7 @@ tags:
 share: "true"  
 github_title: 2024-02-19-basics-about-data-structure  
 title: 0. Basics about Data Structure  
-date: 2023-04-25  
+date: 2024-02-19  
 categories:  
   - Lecture Notes  
   - Data Structure  
