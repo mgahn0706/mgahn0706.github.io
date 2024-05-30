@@ -9,6 +9,7 @@ date: 2023-10-05
 categories:  
   - Development  
   - Web  
+math: "true"  
 ---  
 ### 찾아보거나 알게된 배경  
   
