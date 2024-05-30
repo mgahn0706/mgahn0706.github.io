@@ -6,6 +6,7 @@ github_title: 2024-04-01-affordance-psychology
 title: 어포던스와 심리학  
 date: 2024-04-01  
 categories:  
+  - Development  
   - HCI  
 ---  
 ### Introduction  
