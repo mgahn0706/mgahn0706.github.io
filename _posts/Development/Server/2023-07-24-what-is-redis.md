@@ -14,7 +14,7 @@ Redis는 `메모리 기반 key-value store` 입니다.
   
 **NoSQL: key-value** 먼저, SQL과 NoSQL에 대해서 알아보았습니다.  
   
-![](../../assets/img/posts/Pasted%20image%2020240603130631.png)  
+![](/assets/img/posts/Pasted%20image%2020240603130631.png)  
   
   위와 같이 row와 column으로 이루어진 데이터베이스를 관계형 데이터베이스(Relational Database)라고 합니다. 이 데이터베이스를 관리하기 위한 언어가 SQL (structured query language) 입니다. SQL을 통해 데이터의 생성, 검색, 수정, 삭제 를 수행할 수 있습니다.  
   
