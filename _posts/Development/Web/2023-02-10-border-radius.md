@@ -4,7 +4,7 @@ tags:
   - css  
 share: "true"  
 github_title: 2023-02-10-border-radius  
-title: Template  
+title: border radius는 어떻게 계산될까  
 date: 2023-02-10  
 categories:  
   - Development  
