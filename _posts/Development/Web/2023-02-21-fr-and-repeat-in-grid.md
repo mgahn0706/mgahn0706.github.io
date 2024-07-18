@@ -14,7 +14,7 @@ categories:
   
 CSS 그리드는 2차원의 레이아웃 시스템으로, column과 row 기반이다.  
   
-![](../../assets/img/posts/Pasted%20image%2020240718115014.png)  
+![](/assets/img/posts/Pasted%20image%2020240718115014.png)  
   
 각 행과 열 사이에 공백을 줄 수 있는데, 이를 `gutter` 라고 합니다.  
   
