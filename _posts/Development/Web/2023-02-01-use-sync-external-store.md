@@ -19,7 +19,7 @@ useSyncExternalStore은 React 18에 새롭게 나온 훅입니다.
   
 useState와 같이 리액트에서 제공하는 상태관리 도구들은 이런 concurrent rendering에서 발생하는 tearing을 처리할 수 있도록 구현되어있습니다. 하지만, redux같이 외부 상태관리 도구(external store)에서는 문제가 발생할 수 있습니다.  
   
-![](../../assets/img/posts/Pasted%20image%2020240717150652.png)  
+![](/assets/img/posts/Pasted%20image%2020240717150652.png)  
   
 용법  
   
