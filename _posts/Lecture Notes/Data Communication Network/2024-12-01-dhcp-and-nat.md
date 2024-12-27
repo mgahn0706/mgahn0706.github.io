@@ -130,7 +130,7 @@ DHCP can return more than ip address like
 - name and IP address of DNS server  
 - network mask  
   
-So, if you access [www.google.com](http://www.google.com) at coffee shop and coffee shop uses KT wifi access point with DHCP server, it will use DNS server of KT(belonging to ISP)  
+So, if you access [www.google.com](https://www.google.com) at coffee shop and coffee shop uses KT wifi access point with DHCP server, it will use DNS server of KT(belonging to ISP)  
   
 → Different DNS means it uses different server. So, it can resolve server blocking  
   
@@ -185,7 +185,7 @@ However, Internet is not strict with location → Ip address can be different by
   
 ## NAT: Network address translation  
   
-[192.2.xxx](http://192.2.xxx) 같은 IP주소를 다 하나하나 매칭하면 너무 많다.  
+`192.2.xxx` 같은 IP주소를 다 하나하나 매칭하면 너무 많다.  
   
 → local에서는 virtual ip address를 쓰고, router 밖으로 나갈때는 하나만 쓰자.  
   
@@ -225,8 +225,6 @@ NAT is controversial
 32-bit is too small!  
   
 → fixed header size of 40 byte (note that it was 20 byte in former version)  
-  
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/bdc23bea-49ed-413d-9b14-ccfb1b348d92/787b5fc1-c259-4731-9252-c8430ee5eb18/image.png)  
   
 → But not allowed to fragment!  
   
