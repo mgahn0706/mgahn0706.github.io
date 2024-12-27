@@ -246,7 +246,7 @@ Correction에는 추가적인 값들을 주어서 하나정도는 없어져도 �
   
 적당한 비율을 통해 복호화하는 것이 좋을 것이다.  
   
-[FEC](http://www.ktword.co.kr/test/view/view.php?no=693)  
+[FEC](https://www.ktword.co.kr/test/view/view.php?no=693)  
   
 <aside> 📖  
   
