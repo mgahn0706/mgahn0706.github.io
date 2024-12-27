@@ -18,7 +18,7 @@ categories:
 - 각 페이지는 HTML 베이스의 파일로 이루어져있으며, 이미지, 영상 등을 reference하고 있다.  
 - 각각의 객체는 URL로써 address될 수 있다.  
   
-ex) [www.snu.ac.kr](http://www.snu.ac.kr) → host name  
+ex) [www.snu.ac.kr](https://www.snu.ac.kr) → host name  
   
 /someDept/pic.gif → path name  
   
