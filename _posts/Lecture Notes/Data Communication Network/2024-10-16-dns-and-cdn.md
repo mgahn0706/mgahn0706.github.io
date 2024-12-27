@@ -149,9 +149,9 @@ body -
   
 - 모두싸인이라는 스타트업을 만들었다.  
 - modusign.com이라는 이름을 DNS registrar에 등록한다.  
-- 이름([modusign.co.kr](http://modusign.co.kr) 등)과 IP addresses 들을 넘겨준다.  
-    - ([modusign.co.kr](http://modusign.co.kr), [cdn.modusign.co.kr](http://cdn.modusign.co.kr) NS)  
-    - ([cdn.modusign.co.kr](http://cdn.modusign.co.kr), 121.121.121.121, A)  
+- 이름([modusign.co.kr](https://modusign.co.kr) 등)과 IP addresses 들을 넘겨준다.  
+    - ([modusign.co.kr](https://modusign.co.kr), [cdn.modusign.co.kr](https://cdn.modusign.co.kr) NS)  
+    - ([cdn.modusign.co.kr](https://cdn.modusign.co.kr), 121.121.121.121, A)  
   
 ---  
   
