@@ -28,9 +28,10 @@ DNS서비스는 과연 무엇을 하는 것일까
 - hostname → IP address translate  
 - host aliasing  
 - load balance (여러 개의 웹 서버를 하나의 주소로 관리하여 load balance)  
-    - ex) [www.google.com](http://www.google.com) → 실제 구글 웹 서버는 여러개가 있다.  
+    - ex) [www.google.com](https  
+    - ://www.google.com) → 실제 구글 웹 서버는 여러개가 있다.  
           
-        - [www1.google.com](http://www1.google.com), [www2.google.com](http://www2.google.com) …  
+        - [www1.google.com](https://www1.google.com), [www2.google.com](https://www2.google.com) …  
           
         이렇게 많은 서버들 중, appropriate server로 redirect한다.  
           
@@ -56,7 +57,7 @@ top level domain server로, kr, uk, com 등을 관리
   
 (3) Authoriative server  
   
-[amazon.com](http://amazon.com) 등 특정 회사나 조직의 own-DNS server  
+[amazon.com](https://amazon.com) 등 특정 회사나 조직의 own-DNS server  
   
 **Why?**  
   
@@ -109,14 +110,14 @@ DNS record format: (RR)
   
 (2) type=NS  
   
-- name is domain (ex, [amazon.com](http://amazon.com))  
+- name is domain (ex, [amazon.com](https://amazon.com))  
 - value is hostname of authoritative name server for this domain  
   
 (3) type=CNAME  
   
 - name is alias name for some canonical (real name).  
 - value is canonical name  
-    - ex) [www.ibm.com](http://www.ibm.com) [servereast.backup2.ibm.com](http://servereast.backup2.ibm.com)  
+    - ex) [www.ibm.com](https://www.ibm.com) [servereast.backup2.ibm.com](https://servereast.backup2.ibm.com)  
   
 (4) type=MX  
   
