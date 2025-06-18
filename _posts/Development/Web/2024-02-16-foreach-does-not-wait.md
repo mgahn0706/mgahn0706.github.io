@@ -46,7 +46,7 @@ polyfill을 봐도 단순 for문 실행해주는 method인 것이다.
   
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of)  
   
-찾아보니 fot awiat of는 [async iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) object를 순회하는 Loop을 만들어준다고 한다.  
+찾아보니 for awiat of는 [async iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) object를 순회하는 Loop을 만들어준다고 한다.  
   
 다수의 비동기 함수를 처리할 때, 이번 e2e 케이스와 같이 하나하나를 기다려야하는 경우에는 for await … of 구문이 유용한 것을 알았다.  
   
