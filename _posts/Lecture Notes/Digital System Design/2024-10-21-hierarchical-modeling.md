@@ -90,7 +90,7 @@ module decoder_n2m
   
 always@(*) begin  
 	if(enable == 1'b1) begin  
-		y = {{M-1{0}, 1} << x;  
+		y = {M-1{0}, 1} << x;  
 	end  
 	else y = {M{0}};  
   
