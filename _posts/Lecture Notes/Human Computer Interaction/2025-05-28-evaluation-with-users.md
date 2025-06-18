@@ -62,12 +62,6 @@ Use standard `informed consent form`nnnb
   
 ---  
   
-![image.png](attachment:360ef464-5c12-444c-8277-09bbd54081cb:image.png)  
-  
----  
-  
----  
-  
 ## Conducting Experiment  
   
 Before experiment  
