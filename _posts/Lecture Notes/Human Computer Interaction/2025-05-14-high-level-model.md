@@ -2,340 +2,202 @@
 tags:  
   - hci  
   - conceptual-model  
-  - affordance  
-  - direct-manipulation  
-  - metaphor  
+  - GOMS  
 share: "true"  
 github_title: 2025-05-14-high-level-model  
-title: 13. Conceptual Framework  
+title: 12. High-Level Model  
 date: 2025-05-14  
 categories:  
   - Lecture Notes  
   - Human Computer Interaction  
 ---  
-### Conceptual Frameworks를 배우자.  
+## GOMS  
   
-- Norman’s seven stages of action model  
-- Gulf of execution and Gulf of evalutation  
-- Direct manipulation  
-- Interface metaphor and mental models  
+HIP: good model for ‘short’, ‘isolated’ task.  
   
----  
+→ Do not scale to complex, routine tasks!  
   
-### Why conceptual framework?  
+GOMS: A higher-level model  
   
-- They help us `explain` and `predict` user behavior based on theories on **cognition**.  
+→ Models `skilled` behavior using Goals, Operators, Methods, and Selection rules.  
   
-우리는 이 세가지를 잘 align해서 효과적인 인터페이스를 만들어야 한다.  
+Why use GOMS?  
   
-- Design Model 디자이너가 의도한 시스템의 concept  
-- User’s Model 유저가 시스템을 보고 이해한 mental understanding  
-- System Image 유저에게 인터페이스를 통해 시스템이 보여주는 것  
-  
-A conceptual model in HCI refers to the **overall structure** and **behavior that the system conveys** to the user - shaping their **mental models.**  
+- `experienced workers` 의 수행 시간 예측 가능  
+- 인터페이스 디자인 결정을 도움  
+- routine cognitive-motor task에 집중함 (problem solving이 아님)  
   
 ---  
   
-## Explaining User behavior!  
+### CNM-GOMS  
   
-사용자가 시스템과 상호작용하면, 그들은 서로 다른 스테이지로 이루어진 cognitive process를 거친다.  
+- Goals  
+    - 원하는 결과나 작업  
+    - 어떤 응용 프로그램이냐에 관계 없이 동일함. 함수명과 같음 (ex. print page)  
+- Operators  
+    - 작업을 수행하기 위한 기초적인 행동. (perceptual, cognitive or motor) (ex. 선택한다, 하이라이트 한다)  
+- Methods  
+    - sub-goal이나 operator의 일련의 순서 → 목적을 달성하기 위함  
+    - 선택한다 → 백스페이스를 누른다. → 지워진 것 확인 → (글자 지우기 목적 달성!)  
+- Selection Rules  
+    - 여러 method가 있을 때 무엇을 선택할 것인가?  
+    - 애매하지 않은, 하나로 딱 정해지는 기준이 있어야함 (deterministic)  
   
-### Conecptual Framework의 장점  
+→ Classic GOMS (CNM-GOMS, KLM) assumes `skilled users`  
   
-(1) Understand how user approach task  
-  
-(2) Predict where confusion or failure may occur  
-  
-(3) Improve interface design by addressing these breakdowns.  
-  
----  
-  
-## Norman’s Seven Stages of Action Model  
-  
-Explain the `cognitive` process of a user while performing a task  
-  
-### 1. Goal  
-  
-The desired outcome or state the user wants to reach  
-  
-“댓글에서 의견들이 뭔지 알고 싶다”  
-  
-### 2. Intention  
-  
-Chosen strategy to fulfill the goal  
-  
-“댓글의 의견 창으로 간다”  
-  
-### 3. Action Specification  
-  
-mapping the plan to specific actions, supported by the system  
-  
-댓글 탭의 ‘의견’ 탭 버튼을 보고 해당 버튼을 클릭해야겠다고 생각한다  
-  
-### 4. Execution  
-  
-Physically performing the action  
-  
-마우스를 움직여 댓글 탭의 ‘의견’ 탭 버튼을 누른다  
-  
-여기까지 goal - to -action  
-  
-→ 여기서 user intention과 available action이 잘 매핑이 안되면 breakdown 발생  
+→ CPM-GOMS, NGOMSL address `learning` and `parallel behavior` → more accurate.  
   
 ---  
   
-### 5. Perception  
+## Origin of GOMS  
   
-Noticing the system’s response  
+목적  
   
-의견 탭으로 이동하며 뜨는 그래프들을 본다  
+- Expert user가 어떻게 인터페이스와 상호작용하는지에 대한 structural way를 준다.  
   
-### 6. Interpretation  
+영향  
   
-Understanding what that response means  
-  
-아 지금 각 의견들에 대한 클러스터와 댓글 변화가 떴구나  
-  
-### 7. Evaluation  
-  
-Comparing the outcome with the original goal  
-  
-이제 의견들에 대한 댓글을 볼 수 있네, 목표가 달성되었군  
-  
-→ poor `visibility`, ambiguous `feedback` , and mismatched `expectations` can cause failure  
+- Model-based evaluation in HCI → 사용자 없이 수학적 모델로 실험.  
+- Led to the development of several GOMS variants!  
   
 ---  
   
-## Design questions to ask  
+<aside> 💡  
   
-How easily can one determine the `function` of the device?  
+GOMS 바탕으로 분석하기!  
   
-- Tell what actions are possible?  
-- Determine mapping from intention to physical movement?  
-- Perform the action?  
-- Tell what state the system is in?  
-- Determine mapping from system state to interpretation?  
-- Tell if system is in desired state?  
+</aside>  
   
----  
+ex) 단어 일부 옮기기.  
   
-## Cognitive Engineering  
+Goal: quick brown을 앞으로 옮기고 싶다.  
   
-Norman  
+subgoal: 해당 문장을 하이라이트하고 싶다.  
   
-### Gulf of `Execution`  
+Operators: 단어를 더블클릭하여 하이라이트한다. 키보드 백스페이스를 누른다.  
   
-- 어떻게 쓰는거지?  
-- 뭘 눌러야 하지?  
-- 이거 하고 싶은데…  
+Methods: 키보드로 복사-붙여넣기를 한다. 단어를 삭제하고 다시 타이핑한다.  
   
-‘유저가 의도한 것’과 ‘시스템이 지원하는 것’에 대한 간극  
-  
-Solution?  
-  
-- Use clear affordance  
-- Make actions visible and intuitive  
-- Minimize the number of steps  
+Selection Rules: 단어 단위 이동이면 더블클릭. 글자 단위라면 지우고 다시 쓰기.  
   
 ---  
   
-### Gulf of `Evaluation`  
-  
-- 뭐야 제대로 눌린거 맞아?  
-- 그래서 지금 어떻게 된거지? 뭐가 변한거지?  
-- 내 작업이 성공한건가?  
-  
-‘시스템이 보여준 것’과 ‘유저가 이해한 것’의 간극  
-  
-Solution?  
-  
-- Provide immediate and meaningful **feedback**  
-- make system **visible**  
-- Avoid ambiguous indicators  
-  
-⇒ 두 gulf 모두 디자이너가 제어할 수 없는 영역임. individual의 문화적 관습, 기술적 지식에 영향. (e.g. 모바일뱅킹)  
-  
-⇒ Making actions visible and intuitive. Providing clear, timely and meaningful feedback.  
+→ bottleneck을 파악하고 자주 반복되는 operator들을 shortcut으로 만들어 줄 수 있다.  
   
 ---  
   
-## Distance in Meaning and Form of Expression  
+## Keystroke Level Model (KLM)  
   
-실제 목표와 머릿속에 나타난 표현 사이에는 semantic distance가 있고, 머릿속의 표현과 표현이 실제로 나타나는 형식 사이에는 articulatory distance가 존재한다.  
+- GOMS의 간소화버전.  
+- Routine, error-free task  
+- No selction rules → Assume Decision already made  
   
-Goal ↔ Intention : Semantic distance  
+키보드 입력 - K (=0.2s), 포인터 이동 - P (=1.1sec) 처럼 각 operator를 매핑함.  
   
-Intention ↔ Execution (Action specification): Articulatory distance  
+**→ 고정된 값으로 매핑하기 때문에 상대적으로 비교하는 것이 중요.**  
   
-Perception ↔ Evaluation (Interpretation): Articulatory distance  
+KLM도 predictive model!  
   
-Evaluation ↔ Goal : Semantic distance  
-  
----  
-  
-## How to Bridge the Gulfs in interaction?  
-  
-From system side…  
-  
-- Provide **intuitive** interface with clear **feedback**  
-- Ensure the system **reflects user goals and expectation**  
-  
-From user side…  
-  
-- Support the formation of accurate **mental models**  
-- **Reduce** the **cognitive burden** on user required to operate the system.  
+- Task 실행 시간을 예측할 수 있음. (experienced users)  
+- 구현 전에 interface를 비교할 수 있음.  
   
 ---  
   
-## Direct manipulation  
+<aside> 💡  
   
-An interaction style where users `directly act on visible objects` using `intuitive physical actions` , rather than issuing abstract commands.  
+KLM 바탕 시간 분석이 나올 듯.  
   
-### Three principles  
+</aside>  
   
-- Continuous representation of the object, actions using meaningful visual metaphors (deag…)  
-    - 마우스 드래그하면 연속적으로 렌더링한다.  
-- Use of physical actions (e.g. clicking, dragging) instead of complex command syntax  
-    - figma 쓰는데 move x. … 이런거 쓰지 않지.  
-- **Rapid**, **incremental**, **reversible** actions with immediate visual feedback.  
+K: 키보드 버튼 누르기  
   
-### 기본 아이디어  
+P: 마우스 포인팅. 커서 옮기기  
   
-- 물체가 그 자체의 시각적 특성으로 이해된다  
-    - Using good affordance  
-    - Using good conceptual model  
-- Action은 스크린에서의 효과로 이해된다.  
-    - rapid and incremental  
-    - reversible  
-    - immediate visual feedback  
+H: 키보드 ↔ 마우스 손 옮기기  
   
-### 효과  
+M: 행동 전 생각하기  
   
-- Direct engagement  
-    - The feeling of `working directly` on the task (직접 한다는 느낌)  
-    - No need to know the implementation details  
-- Display == Reality (WYSIWYG)  
-- Fewer error messages..? (Constraint 기반. 다만 에러는 줄겠지만 답답할 수 있음)  
+R(t): 시스템 응답 시간  
   
 ---  
   
-## Grammatical Structure of Interface Language  
+그 외에도 B: 마우스 버튼 클릭, W: system response를 기다리는 wait time 등이 추가될 수 있음.  
   
-### Object-Action: User select → Perform action on it  
+→ Multiple variants!  
   
-- `modeless`  
-- Action always occur within the context of object  
-    - 파일에게 더블클릭  
-    - 물체를 드래그  
-    - 객체를 선택  
-  
-### Action-Object: action mode select → specify object  
-  
-- Modal (the user need to stay in correct mode)  
-- Mode error can be dangerous  
-- effective for repetitive tasks  
-    - 파일 열기 위해 메뉴를 누른다  
-    - 그리기 도구를 누른 후 그린다  
+→ Useful for tasks with fine-grained interactions. (dnd)  
   
 ---  
   
-## Interface Metaphors  
+## Application & Limitation of GOMS  
   
-Why use metaphors for design  
+### Application  
   
-1. Leverages users `prior knowledges` of familiar, concrete real-world objects.  
-2. Transfer this knowledge to `abstract` computer concepts  
-3. Reduces the `learning curve` and improve `usability`  
+- CAD system  
+- Telephone operator (CPM-GOMS: modern)  
+- KLM  
   
-Ex. 파일을 버리는 곳은 휴지통, 페인트 칠하기는 붓 커서  
+### Limitations  
   
-### Conversation metaphor  
-  
-CLI systems, voice-based assistant,  
-  
-- 인터페이스는 언어 매체.  
-- 유저는 인터페이스를 virtual world로 통하는 매체로 여김.  
-- 내가 하려는 action을 언어적으로 설명  
-  
-ex. Siri, CLI, 리눅스 터미널  
-  
-### Model world metaphor  
-  
-GUI systems, direct manipulation system  
-  
-인터페이스 자체가 virtual `world` .  
-  
-해당 world가 명시적으로 표현됨.  
-  
-action을 설명하는게 아니라 객체를 직접 조작.  
-  
-ex. Figma  
+- Only assume skilled users (for GOMS)  
+- Do not deal with **errors**  
+- Do not deal with skull aquisition  
+- Do not deal with high level issues (functionality, fatigue, workload)  
+- Better for `relative` than absolute timing (그냥 고정된 값 할당한거라 그 자체로는 의미가 별로…)  
   
 ---  
   
-### Direct Engagement  
+## CPM-GOMS  
   
-Model world metaphor를 사용하는게 필요조건  
+cognitive perceptual motor GOMS.  
   
-- Allow user act on objects of interest.  
-- Create feeling of control over semantic objects  
-- Reducing awareness of the system or code  
+각 cognitive model이 parallel하게 동작. 의존성 있는거 최대한 기다리고 각 프로세서 (모터는 심지어 눈,왼손, 오른손이 나뉨) 에 최대한 할당.  
   
----  
+### NYNEX Example  
   
-## Metaphors Caveats  
+전화 회사에서 이걸 적용해서 아주 이슈가 되었다~  
   
-common pitfalls  
+- keystroke을 줄이고  
+- 자주쓰는걸 유저 손가락 가깝게!  
   
-### Too limited!  
+→ 근데 4% 느려짐…  
   
-metaphor는 인터페이스의 가능성을 제한시킨다.  
+KLM만 썼으면 이걸 설명할 수가 없음. 하지만 CPM-GOMS는 가능함.  
   
-- 데스크탑은 실시간 협업을 잘 은유하지 못한다  
+→ 제거한 keystroke는 critical path에 있지 않았음. (어차피 slack time에 누르는 것)  
   
-### Too Powerful  
+→ 제거한 keystroke이 critical path에 놓이게 되면서 더 느려짐.  
   
-metaphor는 은유된 실제 제품에 대해 전부 다 될 것이라고 믿는다.  
+사실 이건 실제 관찰 기준이 아니라 spec 기준으로 해서 그렇게 됨. (실제로 어떻게 이루어지는지 모르고 만듦. 그래도 field trial보다는 쌌잖아 한잔해~)  
   
-- 대량전송 에디터에 수식 기능을 원한다…  
+Saving not bottleneck doesnt help!  
   
-### Too literal or cute  
-  
-너무 metaphor에 치중한 나머지 tedious, confusing, gimmick을 넣는다  
-  
-- 휴지통을 열어서 파일을 버리려면 뚜껑을 열어야함 ㅋㅋ  
-  
-### Mismatched  
-  
-task와 user mental model과 align되어있지 않으면 혼란스럽다  
+→ 설득 측면에서 이득.  
   
 ---  
   
-## Direct Manipulation의 장단점  
+## NGOMSL Methodology  
   
-### Good for intermediate users  
+- Top down breadth-first task decomposition  
+    - 사용자의 탑-레벨 목표부터 시작.  
+    - 그 목표를 이루기 위한 과정을 subgoal이나 keystroke 수준에서 작성.  
+    - keystroke만 남을 떄까지 반복.  
+    - selection rule 적용  
+- Count the number of statements in methods to predict learning time  
+    - re-used submethods? → 간편화하자.  
   
-- 정확한 좌표 찍는 등 정확도에 유리  
-- leverages `recognize` over `recall`  
+그럼 selection rule 어떻게 설정하는가.  
   
-### Limits of Explicit Interaction  
+- 만약 너가 비디오 녹화 시작할 때와 끝날 때 모두 출석이라면 → 버튼으로.  
+- 끝날 때 없고, 시간을 안다면 → 끝나는 클럭 타이머 세팅  
   
-- How to automate, generalize task?  
-- Manually repeat actions  
+조금더 natural language에 가깝다.  
   
-### Metaphor can be too restrictive  
+---  
   
-- WYSIAYG  
-- Limit access to hidden capabilities  
-- can discourage exploration  
+## 그래서 GOMS의 Value가 뭐지?  
   
-### Problems?  
-  
-- Consime valuable screen space  
-- Must learn the meaning of visual representations  
-- Misleading visual representations (ex. 돋보기 = 확대, 검색?)  
-- Blind or vision-impaired people ?  
-- Experts?  
-- Small screens?  
-  
----
+- (아마도) high-value decision에 좋다.  
+- (아마도) strong-arguments를 만드는데 좋다.  
+- 개발자/디자이너가 어떤 작업, 어떤 디자인 결정이 속도에 영향을 주고 안주는지 결정하는데에 대한 직관을 기르게 해준다!  
+    - Helping designers develop an intuition about what **works** and what **doesn’t** work. and the impact of **design decision on speed**
