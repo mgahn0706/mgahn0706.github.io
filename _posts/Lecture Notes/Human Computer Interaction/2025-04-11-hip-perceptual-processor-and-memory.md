@@ -161,8 +161,6 @@ $$
   
 → UI Design Insight: UI feedback이 100ms보다 짧게 온다면, 유저에게는 바로 일어났다고 생각됨. = better UX  
   
-![image.png](attachment:77554043-151d-4b79-82a7-67c64f16fb9f:image.png)  
-  
 ### Color makes them popout  
   
 color, orientation, shape, size 등을 바꿔서 pre-attentive 하게 할 수 있다  
