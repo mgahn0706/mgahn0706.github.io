@@ -2,14 +2,15 @@
 tags:  
   - verilog  
   - dataflow  
-  - strutctural  
-  - bahavioral  
+  - behavior  
+  - structural  
 share: "true"  
 github_title: 2024-10-17-introduction-to-verilog  
-title: Introduction to Verilog  
+title: 2. Introduction to Verilog  
 date: 2024-10-17  
 categories:  
-  - Introduction to Verilog  
+  - Lecture Notes  
+  - Digital System Design  
 ---  
 # Verilog is Hardware Description Language!  
   

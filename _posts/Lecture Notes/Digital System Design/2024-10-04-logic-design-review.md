@@ -3,7 +3,7 @@ tags:
   - digital-logic  
 share: "true"  
 github_title: 2024-10-04-logic-design-review  
-title: Logic Design Review  
+title: 1. Logic Design Review  
 date: 2024-10-04  
 categories:  
   - Lecture Notes  
