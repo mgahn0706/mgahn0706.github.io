@@ -84,8 +84,6 @@ L1 cache까지는 virtual로 쓰면 되지 않느냐?
   
 ### Hybrid: VIPT (virtually indexed, physically tagged)  
   
-![image.png](attachment:f7a0b304-b43f-4458-8d28-bfcb356fd35d:image.png)  
-  
 C≤(Page size * associativity) … cache index 는 Page offset에서만 나옴. 즉, Page offset에서 적절히 cache처리해서 나온 physical tag를 처리하고, VPN는 TLB 처리해서 나온 PPN으로 처리해서 비교한다.  
   
 다만, C > (page size * associativity) 이면,  
