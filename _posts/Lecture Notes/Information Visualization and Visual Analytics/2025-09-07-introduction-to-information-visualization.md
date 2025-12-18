@@ -106,7 +106,8 @@ Why use an External Representation?
   
 **→ Steven’s Power Law**  
   
-$$ {{p_1}\over{p_2}}=({{a_1}\over{a_2}})^\alpha $$  
+$$ \frac{p_1}{p_2} = \left( \frac{a_1}{a_2} \right)^\alpha $$  
+  
   
 $\alpha$가 1에 가까우면 정확한 perceived. 1보다 작으면 실제 비율보다 더 작게 perceived됨. (e.g. 면적과 부피는, 길이보다 $\alpha$값이 작음)  
   
