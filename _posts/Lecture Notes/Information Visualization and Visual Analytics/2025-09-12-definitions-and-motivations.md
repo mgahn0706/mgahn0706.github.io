@@ -150,19 +150,11 @@ why not sonification or tastification (…) ?
   
 예쁜 것만을 만드는게 우선순위가 아니라는 뜻이다.  
   
-<aside> <img src="/icons/report_gray.svg" alt="/icons/report_gray.svg" width="40px" />  
-  
-Any visualization is an `abstraction` where choices are made about which **aspects to emphasize**  
-  
-</aside>  
-  
 ---  
   
 ### Most design is ineffective…due to huge design space  
   
 Not to optimize…but consider multiple alternatives in parallel  
-  
-![image.png](attachment:244c16ae-5af9-4e6f-a948-0f4c6b38ec98:image.png)  
   
 ---  
   

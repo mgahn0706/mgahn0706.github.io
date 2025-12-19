@@ -43,14 +43,9 @@ The science of analytical reasoning faciliated by interactive. visual interfaces
   
 - Waterfall model  
 - data mining community  
-  
-![image.png](attachment:4ff1400d-24ff-4130-a057-e71cc799d6e8:image.png)  
-  
 ### InfoVis Pipeline  
   
 - Waterfall again  
-  
-![image.png](attachment:1285ae4e-5e76-4dfd-b1de-ab44c0ffcb15:image.png)  
   
 ### Views on Visualization  
   
