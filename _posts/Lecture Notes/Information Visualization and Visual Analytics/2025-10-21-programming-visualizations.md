@@ -116,8 +116,6 @@ local variable → do not trigger rerendering
   
 프론트엔드 개발에서 정말 중요한 개념인데… 이 수업에서 시험에 나올진 모르겠다  
   
-![image.png](attachment:7fc8c2da-72db-433f-8ee7-fb6f7770d92a:image.png)  
-  
 - Render phase (마운트, 또는 업데이트 처리)  
 - Commit phase (사이드 이펙트 처리, DOM 조작)  
 - Cleanup phase (메모리누수 방지)  
@@ -149,8 +147,6 @@ selection.enter().append('rect')
 selection.exit().remove();  
   
 ```  
-  
-![image.png](attachment:64c24c6e-af23-4ee1-b380-11e466e85101:image.png)  
   
 ### Interaction  
   
