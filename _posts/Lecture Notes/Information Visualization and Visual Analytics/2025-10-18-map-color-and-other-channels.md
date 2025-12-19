@@ -139,10 +139,6 @@ Color matching experiment
   
 → Normalize  
   
-![image.png](attachment:de1cf6b1-e1cf-42b1-b50a-552d021358e1:image.png)  
-  
-![image.png](attachment:46f31804-d3e7-47d4-b9c4-f951b592baa3:image.png)  
-  
 경계는 단색광. (보라색 제외)  
   
 사실 이 map은 perceptually uniform하지 않다.  
@@ -348,8 +344,6 @@ Why color blindness?
 - Accuracy is not uniform!  
     - vertical, horizontal, diagonal은 정확함  
     - 하지만, 다른건 아주 형편이 없음  
-  
-![image.png](attachment:90a2089e-7ea9-4359-bc9e-5090054f7875:image.png)  
   
 이런 orientation resolution은 45도일 때 최대임. 즉, 90도에 가까이 하면 이게 올라가는지 내려가는지 알기 어려움. aspect ratio가 중요하다 이말이다.  
   
