@@ -39,8 +39,6 @@ Every complex visual idiom can be broken into two orthogonal(?) components
 - Containment  
 - Connection  
   
-![image.png](attachment:07f7941e-c335-456a-b8d5-460b82d72d8f:image.png)  
-  
 by Jacques Bertin  
   
 ---  
@@ -106,8 +104,7 @@ Note: People gaze at marks’ height
       
     ---  
       
-    ![image.png](attachment:a0b717ae-4353-46ca-9d0b-374d5fe977ff:image.png)  
-      
+  
     즉, expressiveness는 왼쪽 오른쪽 타입을 data type에 잘 맞추라는 거고,  
       
     effectiveness는 중요한 attribute에 대해 위쪽에 있는걸 쓰라는 말이겠군.  
@@ -205,7 +202,8 @@ important, because position is most effective channel!
   
 원래 길이가 길면 그 차이를 더 크게 줘야한다. (원 자극이 컸다면 차이를 just noticeable하게 해주기 위해 더 큰 변화를 줘야함)  
   
-$$ {{\delta I}\over{I}}=K $$  
+$$ \frac{\delta I}{I} = K $$  
+  
   
 I is intensity.  
   
