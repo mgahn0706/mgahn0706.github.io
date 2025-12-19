@@ -22,8 +22,6 @@ categories:
   
 ## Nested Model  
   
-![image.png](attachment:7d68b65d-7c84-4f4c-a926-0c8a35bac1cd:image.png)  
-  
 → Guidance on when to use what validation method  
   
 There is different threats to validity at each level of model!  
