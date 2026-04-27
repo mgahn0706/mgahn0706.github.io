@@ -1,7 +1,7 @@
 ---  
 tags:  
-  - linear-transformation  
-  - vector-space  
+  - matrix  
+  - linear-equation  
 share: "true"  
 github_title: 2024-09-23-linear-transformations-and-matrices  
 title: 2. Linear Transformations and Matrices  
@@ -11,844 +11,752 @@ categories:
   - Linear Algebra  
 math: "true"  
 ---  
-## 1. Linear Transformations  
+# Elementary Matrix Operations & System of Linear Equations  
   
-### Definition  
+**[Def]** $A \in M_{m \times n}(\mathbb{F})$  
   
-**[Def]** $T: V \rightarrow W$  
+Example:  
   
-($\uparrow$ domain, $\uparrow$ co-domain)  
+$x + 2y + 3z = 5$  
   
-is a **linear transformation** if $V, W$ are vector spaces over $\mathbb{F}$ and for $x, y \in V, c \in \mathbb{F}$:  
+$-x + y - z = -3$  
   
-1. $T(x+y) = T(x) + T(y)$ (addition in V $\rightarrow$ addition in W)  
-      
-2. $T(cx) = cT(x)$  
-      
+$0x + 3y + 0z = 8$  
   
-**Properties:**  
+이렇게 하는 걸 Matrix 로 배운다.  
   
-- $T(\vec{0}_V) = \vec{0}_W$  
-      
-    ($\because T(\vec{0}) = T(\vec{0}+\vec{0}) = T(\vec{0}) + T(\vec{0})$)  
-      
-- $T$ is linear $\iff T(cx+y) = cT(x) + T(y)$  
-      
+**Elementary Row Operations:**  
   
-### Examples  
-  
-- **Ex.** $\mathbb{R}^2 \rightarrow \mathbb{R}^2$ rotation by $\theta$.  
+1. **Type 1:** Interchange any two rows of A.  
       
-- **Ex.** $T_{(x)}$: reflection about the x-axis  
+2. **Type 2:** Multiply any row of A by a nonzero scalar.  
       
-    $x=(a_1, a_2) \Rightarrow T(x) = (a_1, -a_2)$  
-      
-- **Ex.** $T: P_n(\mathbb{R}) \rightarrow P_{n-1}(\mathbb{R})$  
-      
-    $f(x) \mapsto f'(x)$ "Linear" (derivative)  
-      
-- **Ex.** $V = C(\mathbb{R})$ the vector space of continuous real-valued functions on $\mathbb{R}$.  
-      
-    $T: V \rightarrow \mathbb{R}$  
-      
-    $f \mapsto \int_{a}^{b} f(t) dt \quad (a<b)$  
+3. **Type 3:** Add any scalar multiple of a row of A to another row.  
       
   
----  
+Ex: $(\begin{matrix}1&2&3\\ 4&5&6\end{matrix}) \xrightarrow{R_1 \leftrightarrow R_2} (\begin{matrix}4&5&6\\ 1&2&3\end{matrix})$  
   
-## 2. Kernel and Range  
+$(\begin{matrix}2&4&6\\ 4&5&6\end{matrix})$  
   
-Let $T: V \rightarrow W$ be linear.  
+$(\begin{matrix}1&2&3\\ 6&9&12\end{matrix})$  
   
-- **$N(T)$** := null space (kernel) of T  
-      
-    $= \{ x \in V : T(x) = \vec{0} \}$  
-      
-- **$R(T)$** := range (image) of T  
-      
-    $= \{ T(x) : x \in V \}$  
-      
+"Elementary row operation"  
   
-### Theorem 2.1  
+(also in column operation!)  
   
-(a) $N(T)$ is a subspace of $V$. ($\rightarrow$ subset of V)  
+**[Def]** An $n \times n$ **elementary matrix** is a matrix obtained by applying an elementary operation on $I_n$.  
   
-(b) $R(T)$ is a subspace of $W$. ($\rightarrow$ subset of W)  
-  
-Proof)  
-  
-(a) $T(\vec{0}) = \vec{0} \Rightarrow \vec{0} \in N(T)$  
-  
-If $x, y \in N(T)$,  
-  
-$T(x+y) = T(x) + T(y) = \vec{0} + \vec{0} = \vec{0}$  
-  
-$\therefore x+y \in N(T)$  
-  
-(b) $T(\vec{0}) = \vec{0} \Rightarrow \vec{0} \in R(T)$  
-  
-If $x, y \in R(T)$,  
-  
-Let's write $x = T(v)$, $y = T(w)$ where $v, w \in V$.  
-  
-$T(v+w) = T(v) + T(w) = x + y$  
-  
-also in $R(T)$ ($\because v+w \in V$ vector space)  
-  
-### Theorem 2.2  
-  
-$V, W$: vector space, $T: V \rightarrow W$ linear  
-  
-(증명에 $span(\beta)=V$ 만 써서 $V=span(\beta)$ 일때도 써도 OK)  
-  
-If $\beta = \{v_1, ..., v_n\}$ is a basis for V,  
-  
-then $R(T) = Span(T(\beta)) = Span(\{T(v_1), ..., T(v_n)\})$  
-  
-Proof)  
-  
-$R(T) \supseteq Span(T(\beta))$ is clear.  
-  
-Show $R(T) \subseteq Span(T(\beta))$.  
-  
-Let $w \in R(T)$. Then $w = T(v)$ for some $v \in V$.  
-  
-$v = \sum_{i=1}^{n} a_i v_i$  
-  
-$w = T(\sum_{i=1}^{n} a_i v_i) = \sum_{i=1}^{n} a_i T(v_i) \in Span(T(\beta))$  
-  
-**Ex.** $T: P_2(\mathbb{R}) \rightarrow M_{2\times2}(\mathbb{R})$  
-  
-$f(x) \mapsto \begin{pmatrix} f'(0) & 0 \\ 0 & f(0) \end{pmatrix}$  
-  
-$R(T) = Span(T(\beta))$ where $\beta=\{1, x, x^2\}$  
-  
-$= Span(\{ T(1), T(x), T(x^2) \})$  
-  
-$= Span( \{ \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \} )$  
-  
-$\therefore \dim R(T) = 2$  
-  
-- $\dim N(T)$ = **nullity** of T  
-      
-- $\dim R(T)$ = **rank** of T  
-      
-  
-### Theorem 2.3 (Dimension Theorem)  
-  
-$T: V \rightarrow W$ linear. $V$ finite-dim.  
-  
-Then, **nullity(T) + rank(T) = dim(V)**  
-  
-Proof)  
-  
-Let $\dim V = n$, $\dim N(T) = k$. ($k \le n$ because $N(T)$ is subspace of $V$)  
-  
-Let $\{v_1, ..., v_k\}$ be a basis for $N(T)$.  
-  
-Extend $\{v_1, ..., v_k\}$ to $\{v_1, ..., v_k, v_{k+1}, ..., v_n\}$ for $V$. (linearly indep, add more vectors to basis by Replacement Thm).  
-  
-$R(T) = Span(T(\beta)) = Span(\{ T(v_1), ..., T(v_k), T(v_{k+1}), ..., T(v_n) \})$  
-  
-Since $T(v_1)=...=T(v_k)=\vec{0}$,  
-  
-$R(T) = Span(\{ T(v_{k+1}), ..., T(v_n) \})$.  
-  
-**Claim:** $\{ T(v_{k+1}), ..., T(v_n) \}$ is linearly independent.  
-  
-**Why?** Suppose $\sum_{i=k+1}^{n} b_i T(v_i) = \vec{0}$.  
-  
-$T(\sum_{i=k+1}^{n} b_i v_i) = \vec{0} \Rightarrow \sum_{i=k+1}^{n} b_i v_i \in N(T)$  
-  
-This vector exists in $N(T)$, so it is a linear combination of the basis of $N(T)$.  
-  
-$\sum_{i=k+1}^{n} b_i v_i = \sum_{j=1}^{k} c_j v_j$  
-  
-$\Rightarrow \sum_{j=1}^{k} c_j v_j - \sum_{i=k+1}^{n} b_i v_i = \vec{0}$  
-  
-Since $\{v_1, ..., v_n\}$ is a basis ($\Rightarrow$ l.indep),  
-  
-$c_1 = ... = c_k = b_{k+1} = ... = b_n = 0$.  
-  
-$\therefore$ Coefficients $b_i$ are all 0.  
-  
-### Theorem 2.4  
-  
-$T: V \rightarrow W$ linear. $V, W$ vector space over $\mathbb{F}$.  
-  
-**$T$ is one-to-one (injective) $\iff N(T) = \{ \vec{0} \}$**  
-  
-Proof)  
-  
-($\Rightarrow$) If $x \in N(T)$, then $T(x) = \vec{0} = T(\vec{0})$. Since injective, $x = \vec{0}$.  
-  
-($\Leftarrow$) Suppose $T(x) = T(y)$.  
-  
-$T(x) - T(y) = \vec{0} \Rightarrow T(x-y) = \vec{0}$  
-  
-$\Rightarrow x-y \in N(T) = \{ \vec{0} \} \Rightarrow x-y = \vec{0} \Rightarrow x=y$.  
-  
-**Remark:**  
-  
-1. $V, W$ finite dim.  
-      
-    If $\dim V > \dim W$, then no linear transformation from $V$ to $W$ is injective.  
-      
-    **Proof)** $\dim N(T) = \dim V - \dim R(T) \ge \dim V - \dim W > 0$.  
-      
-    $N(T) \neq \{ \vec{0} \} \Rightarrow T$ not injective (by Thm 2.4).  
-      
-    (W의 모든게 대응해도 $\dim R(T) \le \dim W$)  
-      
-    (V가 다르면 W도 달라야 하는데 공간이 부족)  
-      
-2. $V, W$ finite-dim.  
-      
-    If $\dim V < \dim W$, then no linear transformation from $V$ to $W$ is surjective.  
-      
-    **Proof)** $\dim R(T) = \dim V - \dim N(T) \le \dim V < \dim W$  
-      
-    $\dim R(T) \neq \dim W \Rightarrow R(T) \neq W$.  
-      
-3. A homogeneous system of linear equations with more variables than equations has a nonzero solution.  
-      
-    $\begin{cases} a_{11}x_1 + ... + a_{1n}x_n = 0 \\ \vdots \\ a_{m1}x_1 + ... + a_{mn}x_n = 0 \end{cases}$ ($n > m$)  
-      
-    $T: \mathbb{F}^n \rightarrow \mathbb{F}^m$, $\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \mapsto \begin{pmatrix} \sum a_{1j}x_j \\ \vdots \\ \sum a_{mj}x_j \end{pmatrix}$  
-      
-    $\dim \mathbb{F}^n > \dim \mathbb{F}^m \Rightarrow N(T) \neq \{ \vec{0} \}$  
-      
-    (해가 $\vec{0}$이 되는 nonzero solution 적어도 하나 존재한다)  
-      
-  
-### Theorem 2.5  
-  
-$V, W$ finite-dim. $T: V \rightarrow W$ linear.  
-  
-Suppose $\dim V = \dim W$.  
-  
-Then TFAE (The Following Are Equivalent):  
-  
-(a) $T$ is one-to-one (injective)  
-  
-(b) $T$ is onto (surjective)  
-  
-(c) rank(T) = dim(V)  
-  
-Proof)  
-  
-$(a) \iff N(T) = \{ \vec{0} \}$  
-  
-$\iff \dim N(T) = 0$  
-  
-$\iff \dim R(T) = \dim V = \dim W$ ((c))  
-  
-$\iff R(T) = W$ ((b)) ($\because$ subspace)  
-  
-**Ex.** Show for each poly $g \in P_n(\mathbb{R})$, there exists a polynomial $f \in P_n(\mathbb{R})$ s.t. $((x^2+5x+7)f)'' = g$.  
-  
-(finite 아니면 안됨!)  
-  
-Suppose $g \in P_n(\mathbb{R})$.  
-  
-Define $T: P_n(\mathbb{R}) \rightarrow P_n(\mathbb{R})$ by $f \mapsto ((x^2+5x+7)f)''$.  
-  
-$\dim P_n(\mathbb{R})$ is finite.  
-  
-Check $N(T) = \{ \vec{0} \}$?  
-  
-$((x^2+5x+7)f)'' = 0 \Rightarrow (x^2+5x+7)f = ax+b$.  
-  
-Only solution is $f=0$.  
-  
-$\therefore$ Injective.  
-  
-By Thm 2.5, it is surjective. $\rightarrow$ For any $g$, $f$ exists.  
-  
-### Theorem 2.6  
-  
-$V, W$ vector space over $\mathbb{F}$.  
-  
-$\{ v_1, ..., v_n \}$ basis for V.  
-  
-For $w_1, ..., w_n \in W$, there exists a **unique** linear transformation $T: V \rightarrow W$ s.t. $T(v_i) = w_i$ for $i=1, ..., n$.  
-  
-(basis에 대해 $T(v_i)$값인 $w_1...w_n$만 정해도 unique하게 T가 정해진다.)  
-  
-**Coro.** $V, W$ vector space. $V$ has finite basis $\{v_1, ..., v_n\}$.  
-  
-If $U, T: V \rightarrow W$ are linear & $U(v_i) = T(v_i)$ for all $i$, then $T=U$.  
-  
-Proof)  
-  
-Define $T: V \rightarrow W$.  
-  
-$x = \sum a_i v_i$ (basis rep unique) $\mapsto \sum a_i w_i$.  
-  
-(Defined a map. Let's check if it is linear)  
-  
-$T(u+v) = T(\sum b_i v_i + \sum c_i v_i) = T(\sum (b_i+c_i) v_i)$  
-  
-$= \sum (b_i+c_i) w_i = \sum b_i w_i + \sum c_i w_i = T(u) + T(v)$.  
-  
-$T$ is linear!  
-  
-**Uniqueness:** Suppose $U$ is linear and $U(v_i) = w_i$.  
-  
-If $x \in V$, then $U(x) = U(\sum a_i v_i) = \sum a_i U(v_i) = \sum a_i w_i = T(x)$.  
-  
-$\therefore U = T$.  
-  
----  
-  
-## 3. Matrix Representation of Linear Transformations  
-  
-**[Def]** An **ordered basis** for $V$ is a basis for $V$ endowed with a specific order.  
-  
-**Ex.** $\{e_1, ..., e_n\}$: an ordered basis for $\mathbb{F}^n$.  
-  
-$\beta = \{u_1, ..., u_n\}$ ordered basis for $V$.  
-  
-$\forall x \in V, \exists! a_1, ..., a_n \in \mathbb{F}$ s.t. $x = \sum_{i=1}^{n} a_i u_i$.  
-  
-**[Def]** $[x]_\beta := \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix} \in \mathbb{F}^n$  
-  
-**Remark:** $[u_i]_\beta = e_i$ (standard basis vector).  
-  
-Map $V \rightarrow \mathbb{F}^n$, $x \mapsto [x]_\beta$ is the coordinate vector of x relative to $\beta$.  
-  
-**Ex.** $V = P_2(\mathbb{R})$, $\beta = \{1, x, x^2\}$.  
-  
-$f(x) = 4 + 6x - 7x^2 \Rightarrow [f]_\beta = \begin{pmatrix} 4 \\ 6 \\ -7 \end{pmatrix} \in \mathbb{R}^3$.  
-  
-$V, W$ finite-dim.  
-  
-$\beta = \{v_1, ..., v_n\}$ ordered basis for V.  
-  
-$\gamma = \{w_1, ..., w_m\}$ ordered basis for W.  
-  
-$T: V \rightarrow W$ linear map.  
-  
-For each $j=1, ..., n$, $T(v_j) \in W$, so $T(v_j) = \sum_{i=1}^{m} a_{ij} w_i$ (unique scalars).  
-  
-$\Rightarrow \exists! a_{ij} \in \mathbb{F}$ ($1 \le i \le m, 1 \le j \le n$) s.t. ...  
-  
-Define $A = [a_{ij}] = \begin{pmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & & \vdots \\ a_{m1} & \cdots & a_{mn} \end{pmatrix} = [T]_\beta^\gamma$ (Matrix representation).  
-  
-**Remark:**  
-  
-1. If $[U]_\beta^\gamma = [T]_\beta^\gamma$, then $U=T$.  
-      
-2. ($j$-th column of A) $= [T(v_j)]_\gamma$.  
-      
-  
-**Ex.** $T: P_3(\mathbb{R}) \rightarrow P_2(\mathbb{R})$, $f \mapsto f'$.  
-  
-$\beta = \{1, x, x^2, x^3\}$ ordered basis for $P_3(\mathbb{R})$.  
-  
-$\gamma = \{1, x, x^2\}$ ordered basis for $P_2(\mathbb{R})$.  
-  
-$T(1) = 0 \Rightarrow [T(1)]_\gamma = (0,0,0)^T$  
-  
-$T(x) = 1 \Rightarrow [T(x)]_\gamma = (1,0,0)^T$  
-  
-$T(x^2) = 2x \Rightarrow [T(x^2)]_\gamma = (0,2,0)^T$  
-  
-$T(x^3) = 3x^2 \Rightarrow [T(x^3)]_\gamma = (0,0,3)^T$  
-  
-$[T]_\beta^\gamma = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 3 \end{pmatrix}$  
-  
-### Algebra of Linear Transformations  
-  
-$V, W$ vector spaces over $\mathbb{F}$. $T, U: V \rightarrow W$ maps.  
-  
-Define operations:  
-  
-- $(T+U)(x) = T(x) + U(x)$ (Vector addition in W)  
-      
-- $(aT)(x) = aT(x)$ (Scalar multiplication in W)  
-      
-  
-### Theorem 2.7  
-  
-(a) $aT+U$ is linear.  
-  
-(b) Using two operations in (*), the set of all linear transformations from $V$ to $W$ is a vector space over $\mathbb{F}$.  
-  
-Proof)  
-  
-(a) $(aT+U)(cx+y) = aT(cx+y) + U(cx+y)$  
-  
-$= a[cT(x) + T(y)] + cU(x) + U(y)$  
-  
-$= c[aT(x) + U(x)] + [aT(y) + U(y)]$  
-  
-$= c(aT+U)(x) + (aT+U)(y)$  
-  
-(b) (8개 다 체크해야 함 - Must check all 8 axioms)  
-  
-**Def.** $\mathcal{L}(V, W) :=$ the vector space of all linear transformations from V to W.  
-  
-$\mathcal{L}(V)$ if $V=W$.  
-  
-### Theorem 2.8  
-  
-$T, U: V \rightarrow W$ linear.  
-  
-Then:  
-  
-(a) $[T+U]_\beta^\gamma = [T]_\beta^\gamma + [U]_\beta^\gamma$  
-  
-(b) $[aT]_\beta^\gamma = a[T]_\beta^\gamma$  
-  
-Proof)  
-  
-(a) Let $T(v_j) = \sum a_{ij} w_i$ and $U(v_j) = \sum b_{ij} w_i$.  
-  
-$(T+U)(v_j) = T(v_j) + U(v_j) = \sum (a_{ij} + b_{ij}) w_i$.  
-  
-So the $(i, j)$ entry is $a_{ij} + b_{ij}$.  
-  
-(b) similar.  
-  
-$\Phi: \mathcal{L}(V, W) \longrightarrow M_{m\times n}(\mathbb{F})$, $T \mapsto [T]_\beta^\gamma$  
-  
-This map depends on the choice of ordered basis.  
-  
-This map is **linear, injective, & surjective** (Isomorphism).  
-  
-- Injective (Uniqueness)  
-      
-- Surjective (Existence from Thm 2.6 Remark)  
-      
-    (이거 어케 엄밀히 증명하지 Thm 2.8?)  
-      
-  
-### Composition & Matrix Multiplication  
-  
-$U: W \rightarrow Z$, $T: V \rightarrow W$.  
-  
-$V \xrightarrow{T} W \xrightarrow{U} Z$.  
-  
-$UT$: 합성함수 (composition).  
-  
-### Theorem 2.9  
-  
-$UT: V \rightarrow Z$ is linear.  
-  
-**Vector Multiplication (Matrix Multiplication)** $\alpha = \{v_1, ..., v_n\}$ ordered basis of $V$.  
-  
-$\beta = \{w_1, ..., w_m\}$ ordered basis of $W$.  
-  
-$\gamma = \{z_1, ..., z_p\}$ ordered basis of $Z$.  
-  
-Let $A = [U]_\beta^\gamma$, $B = [T]_\alpha^\beta$.  
-  
-Wanted: $[UT]_\alpha^\gamma = [U]_\beta^\gamma [T]_\alpha^\beta = AB$.  
-  
-$(UT)(v_j) = U(T(v_j)) = U(\sum_{k=1}^{m} B_{kj} w_k)$  
-  
-$= \sum_{k=1}^{m} B_{kj} U(w_k)$  
-  
-$= \sum_{k=1}^{m} B_{kj} (\sum_{i=1}^{p} A_{ik} z_i)$  
-  
-$= \sum_{i=1}^{p} (\sum_{k=1}^{m} A_{ik} B_{kj}) z_i$  
-  
-$= \sum_{i=1}^{p} C_{ij} z_i$  
-  
-where $C_{ij} = \sum_{k=1}^{m} A_{ik} B_{kj}$.  
-  
-This matches matrix multiplication definition.  
-  
-(이게 성립되도록 (합성이 잘 되도록) matrix multiplication를 정의)  
-  
-**Remark:** $TU \neq UT$, likewise  
-  
-$\begin{pmatrix}1&1\\ 0&0\end{pmatrix}\begin{pmatrix}0&1\\ 1&0\end{pmatrix} \neq \begin{pmatrix}0&1\\ 1&0\end{pmatrix}\begin{pmatrix}1\\ 0&0\end{pmatrix}$  
-  
-### Theorem 2.10  
-  
-$V$ vector space. $T, U_1, U_2 \in \mathcal{L}(V)$ (or operators).  
-  
-Then,  
-  
-(a) $T(U_1+U_2) = TU_1 + TU_2$  
-  
-(b) $T(U_1 U_2) = (TU_1)U_2$ (먼저하든 상관 X - Associativity)  
-  
-(c) $TI = IT = T$  
-  
-(d) $a(U_1 U_2) = (aU_1)U_2 = U_1(aU_2)$  
-  
-Similarly for right multiplication...  
-  
-### Theorem 2.12  
-  
-$A$ is $m \times n$ matrix. $B, C$ are $n \times p$ matrices. $D, E$ are $q \times m$ matrices.  
-  
-(a) $A(B+C) = AB + AC$  
-  
-(b) $a(AB) = (aA)B = A(aB)$  
-  
-(c) $I_m A = A = A I_n$  
-  
-$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$  
-  
-### Theorem 2.13  
-  
-$A$ is $m \times n$ matrix. $B$ is $n \times p$ matrix.  
-  
-For $j=1, ..., p$, Let $u_j$ be the $j$-th column of $AB$.  
-  
-Then **$u_j = A v_j$** where $v_j$ is the $j$-th column of $B$.  
-  
-**Proof)** $u_j = (AB)_{\cdot j} = \begin{pmatrix} (AB)_{1j} \\ \vdots \\ (AB)_{mj} \end{pmatrix}$  
-  
-$= \begin{pmatrix} \sum_{k=1}^n A_{1k}B_{kj} \\ \vdots \\ \sum_{k=1}^n A_{mk}B_{kj} \end{pmatrix} = \sum_{k=1}^n B_{kj} \begin{pmatrix} A_{1k} \\ \vdots \\ A_{mk} \end{pmatrix}$  
-  
-$= A \begin{pmatrix} B_{1j} \\ \vdots \\ B_{nj} \end{pmatrix} = A(v_j)$  
-  
-**ex)** (entry wise or column wise)  
-  
-$= \sum_{k=1}^n B_{kj} (\text{k-th column of A})$  
-  
-($\Rightarrow$ row로도 할 수 있음)  
-  
-$j$-th column of $B$, $k$-th column of $A$  
-  
-$\begin{pmatrix}0&1&0&0\\ 0&0&0&0\\ 0&0&0&3\end{pmatrix}\begin{pmatrix}2\\ -4\\ 1\\ 3\end{pmatrix} = 2\begin{pmatrix}0\\ 0\\ 0\end{pmatrix} + (-4)\begin{pmatrix}1\\ 0\\ 0\end{pmatrix} + 1\begin{pmatrix}0\\ 2\\ 0\end{pmatrix} + 3\begin{pmatrix}0\\ 0\\ 3\end{pmatrix}$  
-  
-### Theorem 2.14  
-  
-$V, W$ finite-dim vector spaces. $\beta, \gamma$ ordered basis. $T: V \rightarrow W$ linear.  
-  
-Then **$[T(u)]_\gamma = [T]_\beta^\gamma [u]_\beta$** (나를 보고, T를 한뒤 나의 matrix를 보고 Matrix vector 곱하든, T와 곱하고 보든 같다.)  
-  
-**Proof)** Fix $u \in V$.  
-  
-Define $f: \mathbb{F} \rightarrow V$ linear by $a \mapsto au$.  
-  
-Define $g: \mathbb{F} \rightarrow W$ by $a \mapsto aT(u)$.  
-  
-Let $\alpha = \{1\}$ ordered basis for $\mathbb{F}$.  
-  
-Then $g = Tf$.  
-  
-$[g(1)]_\gamma = [T(u)]_\gamma = [g]_\alpha^\gamma$  
-  
-(coordinate vector of $g(1)$ matches matrix of $g$ since domain dim is 1)  
-  
-$= [Tf]_\alpha^\gamma = [T]_\beta^\gamma [f]_\alpha^\beta$  
-  
-Note $[f(1)]_\beta = [u]_\beta$.  
-  
-$\therefore [T(u)]_\gamma = [T]_\beta^\gamma [u]_\beta$.  
+### Thm 3.1  
   
 Let $A \in M_{m \times n}(\mathbb{F})$.  
   
-$L_A: \mathbb{F}^n \rightarrow \mathbb{F}^m$ (**Left-multiplication transformation**)  
+If $B$ is obtained from $A$ by applying an elementary row operation, and $E$ is obtained from $I_m$ by the same elementary row operation,  
   
-$x \mapsto Ax$  
+Then $B = EA$.  
   
-### Theorem 2.15  
+(Note: If column operation, $B = AE$ where $E$ is from $I_n$)  
   
-(a) $L_A$ is linear.  
+Proof) (Case: Type 3)  
   
-(b) If $\beta, \gamma$ are standard ordered bases for $\mathbb{F}^n, \mathbb{F}^m$, then $[L_A]_\beta^\gamma = A$.  
+Suppose $r \ne s$. Add $c$ times row $s$ to row $r$.  
   
-(c) $L_A = L_B \iff A = B$.  
+$E_{ik} = \begin{cases} 1 & i=k \\ c & i=r, k=s \\ 0 & \text{otherwise} \end{cases}$ (This represents $I_m$ modified)  
   
-(d) $L_{A+B} = L_A + L_B$ and $L_{aA} = aL_A$.  
+$(EA)_{ij} = \sum_{k=1}^{n} E_{ik} A_{kj} = \begin{cases} A_{ij} & i \ne r \\ A_{rj} + c A_{sj} & i = r \end{cases}$  
   
-(e) If $T: \mathbb{F}^n \rightarrow \mathbb{F}^m$ is linear, then $\exists! C \in M_{m \times n}(\mathbb{F})$ s.t. $T = L_C$.  
+This is exactly the same as $B_{ij}$!  
   
-(f) If $E \in M_{n \times p}(\mathbb{F})$, then $L_{AE} = L_A L_E$.  
+### Thm 3.2  
   
-(g) If $m=n$, then $L_{I_n} = I_{\mathbb{F}^n}$.  
+Elementary matrices are invertible, and the inverse of an elementary matrix is an elementary matrix of the same type.  
   
-**Proof)** (e) Let $C = [T]_\beta^\gamma$.  
+($E^{-1}$ exists and is elementary).  
   
-(f) $j$-th column of $AE$ is $(AE)e_j$ (by Definition).  
+Proof) $E \bar{E} = I_n$  
   
-Also $L_{AE}(e_j) = (AE)e_j$.  
+Define $\bar{E}$ as the matrix of the reverse operation.  
   
-$L_A L_E (e_j) = L_A (E e_j) = A(E e_j) = (AE)e_j$.  
+(단순 Thm 3.1의 연장선)  
   
-$\therefore$ Same on basis, so equal.  
+Since $E \bar{E} = I_n$, $E$ and $\bar{E}$ are invertible.  
   
-### Theorem 2.16  
+(사실 $AB=I_n \Rightarrow BA=I_n$)  
   
-$A, B, C$ matrices s.t. $A(BC)$ is defined.  
+[Def] $A \in M_{m \times n}(\mathbb{F})$.  
   
-Then $(AB)C$ is defined & **$A(BC) = (AB)C$**.  
+$L_A: \mathbb{F}^n \rightarrow \mathbb{F}^m$, $x \mapsto Ax$.  
   
-(size 비고)  
+rank A $:= \text{rank } L_A$.  
   
-**Proof)** $L_{A(BC)} = L_A L_{BC} = L_A (L_B L_C) = (L_A L_B) L_C = L_{AB} L_C = L_{(AB)C}$.  
+### Thm 3.3  
   
-(Composition $(\cdot)$의 특징 $\Rightarrow$ Linear과 matrix가 연관이 깊다는 점을 이용함.)  
+$V, W$ finite dimensional, $\beta, \gamma$ ordered basis.  
   
-(What if nonlinear?)  
+$T: V \rightarrow W$ linear.  
   
----  
+Then $\text{rank}(T) = \text{rank}([T]_\beta^\gamma)$.  
   
-## 4. Invertibility & Isomorphism  
+Note: $V, W$ finite-dimensional.  
   
-$V, W$ vector spaces over $\mathbb{F}$. $T: V \rightarrow W$ linear.  
+$T: V \rightarrow W$ isomorphism.  
   
-A function $U: W \rightarrow V$ is an **inverse** of $T$ if $TU = I_W$ and $UT = I_V$.  
+$V_0$: subspace of V.  
   
-If $T$ has an inverse, then $T$ is **invertible**.  
+Then $T(V_0) = \{ T(x) : x \in V_0 \}$ is a subspace of W, and $\dim(V_0) = \dim(T(V_0))$.  
   
-$V \xrightarrow{T} W \xrightarrow{U} V$ (Start $V \rightarrow$ Back to $V$)  
+Why? $T|_{V_0}: V_0 \rightarrow W$ given by $x \mapsto T(x)$.  
   
-$W \xrightarrow{U} V \xrightarrow{T} W$ (Start $W \rightarrow$ Back to $W$)  
+$R(T|_{V_0}) = T(V_0)$.  
   
-(같은 걸로 돌아옴)  
+Since $T$ is isomorphism (injective), $T|_{V_0}$ is injective.  
   
-**Remark:**  
+$\therefore T|_{V_0}: V_0 \rightarrow T(V_0)$ is an isomorphism. So $\dim(V_0) = \dim(T(V_0))$.  
   
-- If $T$ is invertible, then the inverse of $T$ is unique. (Denoted $T^{-1}$)  
+Proof of Thm 3.3  
+  
+$T: V \rightarrow W$. Let $A = [T]_\beta^\gamma$.  
+  
+Diagram:  
+  
+$V \xrightarrow{T} W$  
+  
+$\phi_\beta \downarrow \quad \quad \downarrow \phi_\gamma$  
+  
+$\mathbb{F}^n \xrightarrow{L_A} \mathbb{F}^m$  
+  
+Note $\phi_\beta, \phi_\gamma$ are isomorphisms.  
+  
+$\text{rank}(T) = \dim(R(T)) = \dim(T(V)) = \dim(\phi_\gamma(T(V)))$  
+  
+$= \dim(L_A(\phi_\beta(V)))$ (since diagram commutes)  
+  
+$= \dim(L_A(\mathbb{F}^n))$  
+  
+$= \text{rank}(L_A)$  
+  
+$= \text{rank}(A) = \text{rank}([T]_\beta^\gamma)$.  
+  
+Remark  
+  
+$\text{nullity}(T) = \text{nullity}(L_A)$ (by Dimension Theorem).  
+  
+$A \in M_{n \times n}(\mathbb{F})$.  
+  
+Then $A$ is invertible $\iff \text{rank}(A) = n$.  
+  
+### Thm 3.4  
+  
+$A \in M_{m \times n}(\mathbb{F})$.  
+  
+$P \in M_{m \times m}(\mathbb{F})$ invertible matrix.  
+  
+$Q \in M_{n \times n}(\mathbb{F})$ invertible matrix.  
+  
+Then:  
+  
+(a) $\text{rank}(AQ) = \text{rank}(A)$  
+  
+(b) $\text{rank}(PA) = \text{rank}(A)$  
+  
+(c) $\text{rank}(PAQ) = \text{rank}(A)$  
+  
+Proof)  
+  
+(a) $R(L_{AQ}) = R(L_A L_Q) = L_A(L_Q(\mathbb{F}^n))$.  
+  
+Since $Q$ is invertible, $L_Q$ is surjective ($L_Q(\mathbb{F}^n) = \mathbb{F}^n$).  
+  
+$= L_A(\mathbb{F}^n) = R(L_A)$.  
+  
+$\therefore \text{rank}(AQ) = \text{rank}(A)$.  
+  
+Corollary.  
+  
+Elementary row operations on a matrix are rank-preserving.  
+  
+$A \xrightarrow{\text{Elementary row op.}} EA$.  
+  
+$\text{rank}(EA) = \text{rank}(A)$ (since $E$ is invertible).  
+  
+### Thm 3.5  
+  
+The rank of a matrix $A \in M_{m \times n}(\mathbb{F})$  
+  
+= the dim. of the subspace spanned by its columns  
+  
+= the maximal number of its linearly independent columns.  
+  
+($\rightarrow$ 이거 증명하기)  
+  
+Proof)  
+  
+$\beta = \{e_1, ..., e_n\}$ standard ordered basis for $\mathbb{F}^n$.  
+  
+$R(L_A) = \text{Span}(L_A(\beta)) = \text{Span}(\{ L_A(e_1), ..., L_A(e_n) \})$.  
+  
+$L_A(e_j) = A e_j = j\text{-th column of } A$.  
+  
+$\therefore \text{rank}(A) = \dim(\text{Span}(\{\text{columns of } A\}))$.  
+  
+### Thm 3.6  
+  
+$A$ is $m \times n$ matrix of rank $r$.  
+  
+Then $r \le m, r \le n$.  
+  
+By means of a finite number of elementary row & column operations, A can be transformed into the matrix  
+  
+$D = \begin{pmatrix} I_r & O_1 \\ O_2 & O_3 \end{pmatrix}$  
+  
+where $O_1, O_2, O_3$ are zero matrices.  
+  
+Ex.  
+  
+$A = (\begin{matrix}1&2&1\\ 1&0&3\\ 1&1&2\end{matrix}) \sim (\begin{matrix}1&2&1\\ 0&-2&2\\ 0&-1&1\end{matrix}) \sim (\begin{matrix}1&0&0\\ 0&-2&2\\ 0&-1&1\end{matrix}) \sim (\begin{matrix}1&0&0\\ 0&1&-1\\ 0&-1&1\end{matrix}) \sim (\begin{matrix}1&0&0\\ 0&1&0\\ 0&0&0\end{matrix})$  
+  
+**Proof)** Induction on $\text{rank}(A) = r$.  
+  
+1. $\text{rank}(A) = 0 \Rightarrow A$ is the Zero matrix.  
       
-    **Why?** Suppose $U_1, U_2$ are inverses.  
+2. $r = \text{rank}(A) \ne 0 \Rightarrow A_{ij} \ne 0$ for some $i, j$.  
       
-    $U_1 = U_1 I = U_1 (T U_2) = (U_1 T) U_2 = I U_2 = U_2$.  
+    By means of at most three operations, $A \sim \begin{pmatrix} 1 & \cdots \\ \vdots & B \end{pmatrix}$.  
       
-- $(TU)^{-1} = U^{-1} T^{-1}$  
+    Using row/col operations to clear the first row and column:  
       
-    **Why?** $(TU)(U^{-1}T^{-1}) = T(U U^{-1})T^{-1} = T I T^{-1} = T T^{-1} = I$.  
+    $A \sim \begin{pmatrix} 1 & 0 \\ 0 & C \end{pmatrix}$.  
       
-    Similarly for other side.  
+    Rank of this matrix is $1 + \text{rank}(C)$. So $\text{rank}(C) = r - 1$.  
       
-- $(T^{-1})^{-1} = T$.  
+    By induction hypothesis, $C \sim D' = \begin{pmatrix} I_{r-1} & O \\ O & O \end{pmatrix}$.  
       
-    **Why?** Definition.  
-      
-- **Note:** $T$ is invertible $\iff T$ is one-to-one & onto (Bijective).  
-      
-    ($\Leftarrow$) $T: V \rightarrow W$.  
-      
-    $\forall w \in W, \exists! v \in V$ s.t. $T(v)=w$ ($\because$ onto & one-to-one).  
-      
-    Define $U: W \rightarrow V$ by $w \mapsto v$.  
-      
-    Check $TU(w) = T(v) = w$.  
-      
-    Check $UT(v) = U(w) = v$.  
-      
-    **Claim:** $UT(v) = v$.  
-      
-    **Why?** $T(UT(v)) = TU(T(v)) = (TU)(T(v)) = T(v)$.  
-      
-    Since $T$ is one-to-one, $UT(v)=v$.  
+    So $A \sim \begin{pmatrix} 1 & 0 \\ 0 & D' \end{pmatrix} = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix}$.  
       
   
-### Theorem 2.17 (Showing inverse is a linear map)  
+Corollary 1.  
   
-$V, W$ vector spaces over $\mathbb{F}$. $T: V \rightarrow W$ linear & invertible.  
+$A \in M_{m \times n}(\mathbb{F})$. A has rank $r$.  
   
-Then **$T^{-1}: W \rightarrow V$ is linear.**  
+There exist invertible matrices $B, C$ s.t. $BAC = \begin{pmatrix} I_r & O_1 \\ O_2 & O_3 \end{pmatrix}$.  
   
-**Proof)** Let $y_1, y_2 \in W, c \in \mathbb{F}$.  
+Proof)  
   
-$\exists! x_1, x_2 \in V$ s.t. $T(x_1)=y_1, T(x_2)=y_2$.  
+$D = E_p \cdots E_1 A G_1 \cdots G_q$.  
   
-$T^{-1}(cy_1 + y_2)$ should be $cT^{-1}(y_1) + T^{-1}(y_2) = cx_1 + x_2$.  
+Let $B = E_p \cdots E_1$ (invertible).  
   
-$T(cx_1 + x_2) = cT(x_1) + T(x_2) = cy_1 + y_2$.  
+Let $C = G_1 \cdots G_q$ (invertible).  
   
-Apply $T^{-1}$ to both sides:  
+Corollary 2.  
   
-$cx_1 + x_2 = T^{-1}(cy_1 + y_2)$.  
+For $A \in M_{m \times n}(\mathbb{F})$,  
   
-$\therefore T^{-1}$ is linear.  
+(a) $\text{rank}(A^t) = \text{rank}(A)$  
   
-An $n \times n$ matrix $A$ is **invertible** if $\exists$ $n \times n$ matrix $B$ s.t. $AB = BA = I_n$.  
+(b) ...  
   
-($B = A^{-1}$: inverse of A)  
+(c) Spanned by rows...  
   
-**Lemma** $T: V \rightarrow W$ linear, invertible.  
+Proof of Coro 2  
   
-$V$ is finite-dimensional $\iff W$ is finite-dimensional.  
+$D = BAC$.  
   
-In this case, **$\dim V = \dim W$**.  
+$D^t = C^t A^t B^t$.  
   
-**Proof)** ($\Rightarrow$) Let $\beta = \{x_1, ..., x_n\}$ basis for $V$.  
+Check $(AB)^t = B^t A^t$.  
   
-Then $Span(T(\beta)) = R(T) = W$ (since onto).  
+$B, C$ invertible $\Rightarrow B^t, C^t$ invertible.  
   
-$\rightarrow W$ is finite-dimensional.  
+$\text{rank}(D^t) = \text{rank}(C^t A^t B^t) = \text{rank}(A^t)$ (by Thm 3.4).  
   
-($\Leftarrow$) Use $T^{-1}$ instead of $T$.  
+Also $\text{rank}(D^t) = \text{rank}(D) = r = \text{rank}(A)$.  
   
-In this case ($V, W$ finite-dim),  
+Since $D = \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$, $D^t = \begin{pmatrix} I_r & 0 \\ 0 & 0 \end{pmatrix}$.  
   
-### Theorem 2.18  
+$\therefore \text{rank}(A^t) = \text{rank}(A)$.  
   
-(spanned by finite basis)  
+Corollary 3.  
   
-$\text{nullity}(T) + \text{rank}(T) = \dim V$.  
+Every invertible matrix is a product of elementary matrices.  
   
-Since $T$ invertible (one-to-one & onto), nullity $= 0$, rank $= \dim W$.  
+Proof) $A$ invertible $n \times n$ matrix $\Rightarrow \text{rank}(A) = n$.  
   
-$\therefore 0 + \dim W = \dim V \Rightarrow \dim V = \dim W$.  
+$A \sim I_n$.  
   
-$V, W$ finite-dimensional v-sp. $\beta, \gamma$ ordered bases. $T: V \rightarrow W$ linear.  
+$I_n = E_p \cdots E_1 A$.  
   
-Then **$T$ is invertible $\iff [T]_\beta^\gamma$ is invertible.** Moreover, $([T]_\beta^\gamma)^{-1} = [T^{-1}]_\gamma^\beta$.  
+$A = E_1^{-1} \cdots E_p^{-1} I_n = E_1^{-1} \cdots E_p^{-1}$.  
   
-**Proof)** ($\Rightarrow$) Let $\dim V = \dim W = n$.  
+These inverses are also elementary matrices.  
   
-$[T]_\beta^\gamma$ is an $n \times n$ matrix.  
+### Thm 3.7  
   
-$[T^{-1}]_\gamma^\beta [T]_\beta^\gamma = [T^{-1} T]_\beta^\beta = [I]_\beta^\beta = I_n$.  
+$V, W, Z$ finite-dimension.  
   
-($\Leftarrow$) Let $[T]_\beta^\gamma = A$ be invertible.  
+$T: V \rightarrow W$, $U: W \rightarrow Z$.  
   
-$\Phi: \mathcal{L}(V, W) \rightarrow M_{n \times n}(\mathbb{F})$ is an isomorphism.  
+$A, B$ matrices & $AB$ is defined.  
   
-$\exists! U \in \mathcal{L}(W, V)$ s.t. $[U]_\gamma^\beta = A^{-1}$.  
+(a) $\text{rank}(UT) \le \text{rank}(U)$  
   
-Then $[UT]_\beta^\beta = [U]_\gamma^\beta [T]_\beta^\gamma = A^{-1} A = I_n$.  
+(b) $\text{rank}(UT) \le \text{rank}(T)$  
   
-$\Rightarrow UT = I_V$.  
+(c) $\text{rank}(AB) \le \text{rank}(A)$  
   
-Likewise $TU = I_W$.  
+(d) $\text{rank}(AB) \le \text{rank}(B)$  
   
-$\therefore T$ is invertible.  
+(직접해보기)  
   
-**[Def]** $V, W$ vector spaces.  
+Finding the Inverse Matrix  
   
-$V$ is **isomorphic** to $W$ if $\exists$ linear transformation $T: V \rightarrow W$ that is invertible.  
+$A$ invertible $n \times n$ matrix.  
   
-(Note: "is isomorphic to" is an equivalence relation: $V \cong V$; $V \cong W \rightarrow W \cong V$; $V \cong W, W \cong Z \rightarrow V \cong Z$.)  
+Augmented matrix $(A | I_n)$.  
   
-### Theorem 2.19  
+Ex) $A = (\begin{matrix} 0 & 1 \\ 1 & 1 \end{matrix})$. $(A | I_2) = (\begin{matrix} 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 1 \end{matrix})$.  
   
-$V, W$ finite dimensional.  
+$A^{-1}(A | I_n) = (A^{-1}A | A^{-1}I_n) = (I_n | A^{-1})$.  
   
-**$V$ is isomorphic to $W \iff \dim V = \dim W$.**  
+$A^{-1}$ is the product of elementary matrices, say $E_p \cdots E_1$.  
   
-**Proof)** ($\Rightarrow$) By Lemma.  
+(... elementary operation을 하면 $A^{-1}$를 구할 수 있다.)  
   
-($\Leftarrow$) Let $\dim V = \dim W = n$.  
+Then $E_p \cdots E_1 (A | I_n) = (I_n | A^{-1})$.  
   
-$\beta = \{v_1, ..., v_n\}$ basis for $V$.  
+Apply row operations to $(A | I_n)$ to turn the left side into $I_n$. The right side becomes $A^{-1}$.  
   
-$\gamma = \{w_1, ..., w_n\}$ basis for $W$.  
+Summary:  
   
-Let's show $\exists$ invertible linear transformation $T: V \rightarrow W$.  
+By applying a finite number of elementary row operations,  
   
-Define unique $T$ s.t. $T(v_i) = w_i$ (sends basis to basis).  
+$(A | I_n) \sim (I_n | A^{-1})$.  
   
-Then $[T]_\beta^\gamma = I_n$.  
+Note: $(A | I_n) \sim (I_n | B)$ for some $B \in M_{n \times n}(\mathbb{F})$.  
   
-Since $I_n$ is invertible, $T$ is invertible (by Thm 2.18).  
+$E_p \cdots E_1 (A | I_n) = (I_n | B)$.  
   
-**Coro.** $V$ vector space over $\mathbb{F}$.  
+Let $M = E_p \cdots E_1$.  
   
-Then **$V$ is isomorphic to $\mathbb{F}^n \iff \dim(V) = n$.**  
+$M(A | I_n) = (MA | M) = (I_n | B)$.  
   
-**Remark** Coro is important.  
+$\Rightarrow MA = I_n$ and $M = B$.  
   
-ex) $V$ (abstract) $\leftrightarrow \mathbb{F}^n$ (concrete, compute).  
+Since $M$ is invertible & $MA = I_n$, $B = M = A^{-1}$.  
   
-이게 가능.  
+If $A$ is not invertible, then $\text{rank}(A) < n$.  
   
-If $\beta$ is basis, $T(\beta)$ is also basis!  
+$\Rightarrow (A | I_n)$ cannot be row reduced to $(I_n | B)$.  
   
-여기가 쉬우니까, 여기 basis와 $T$ 알면 basis가 나온다.  
+(Elementary row ops don't change rank!)  
   
-ex) $N(T)$를 알고 싶어...  
+Ex 1. $A = (\begin{matrix} 0 & 2 & 4 \\ 2 & 4 & 2 \\ 3 & 3 & 1 \end{matrix})$  
   
-$\Rightarrow N(L_A)$를 구하고 $\phi_\beta^{-1}$를 하면 된다!  
+$(A | I_3) = (\begin{matrix} 0 & 2 & 4 & 1 & 0 & 0 \\ 2 & 4 & 2 & 0 & 1 & 0 \\ 3 & 3 & 1 & 0 & 0 & 1 \end{matrix})$  
   
-$\rightarrow N(L_A)$를 어떻게 구하죠? Ch.3에서...!  
+$\sim (\begin{matrix} 2 & 4 & 2 & 0 & 1 & 0 \\ 0 & 2 & 4 & 1 & 0 & 0 \\ 3 & 3 & 1 & 0 & 0 & 1 \end{matrix})$  
   
-$\dim V = n$. $x \in V$.  
+$\sim (\begin{matrix} 1 & 2 & 1 & 0 & 1/2 & 0 \\ 0 & 2 & 4 & 1 & 0 & 0 \\ 0 & -3 & -2 & 0 & -3/2 & 1 \end{matrix})$  
   
-$\phi_\beta: V \rightarrow \mathbb{F}^n$, $x \mapsto [x]_\beta$.  
+... (Process continues to find inverse)  
   
-Check that this is isomorphism!  
+Ex 2. $A = (\begin{matrix} 1 & 2 & 1 \\ 2 & 1 & -1 \\ 1 & 5 & 4 \end{matrix})$  
   
-$L_A \phi_\beta = \phi_\gamma T$.  
+$\text{rank}(A) \ne 3$. $A$ is not invertible!  
   
-**Why?** $A [x]_\beta = [T(x)]_\gamma$.  
+Ex 3. $T: P_2(\mathbb{R}) \rightarrow P_2(\mathbb{R})$  
   
-(This implies $[T]_\beta^\gamma [x]_\beta = [T(x)]_\gamma$, which is Thm 2.14).  
+$f(x) \mapsto f(x) + f'(x) + f''(x)$  
   
----  
+Basis $\beta = \{1, x, x^2\}$.  
   
-## 5. The Change of Coordinate Matrix  
+$[T]_\beta = \begin{pmatrix} 1 & 1 & 2 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \end{pmatrix}$.  
   
-### Theorem 2.22  
+Is $T$ invertible? Is $[T]_\beta$ invertible? Yes (Upper triangular with 1s on diagonal).  
   
-$V$ finite-dimension. $\beta, \beta'$ ordered basis of $V$.  
+$[T]_\beta^{-1} = \begin{pmatrix} 1 & -1 & 0 \\ 0 & 1 & -2 \\ 0 & 0 & 1 \end{pmatrix} = [T^{-1}]_\beta$.  
   
-Let's find $Q$ s.t. $Q = [I_V]_{\beta'}^\beta$.  
+So, $[T^{-1}(a_0 + a_1 x + a_2 x^2)]_\beta = [T^{-1}]_\beta \begin{pmatrix} a_0 \\ a_1 \\ a_2 \end{pmatrix} = \begin{pmatrix} a_0 - a_1 \\ a_1 - 2a_2 \\ a_2 \end{pmatrix}$.  
   
-(a) $Q$ is invertible.  
+$\therefore T^{-1}(a_0 + a_1 x + a_2 x^2) = (a_0 - a_1) + (a_1 - 2a_2)x + a_2 x^2$.  
   
-(b) **$[v]_\beta = Q [v]_{\beta'}$** (changes the basis)  
+Diagram:  
   
-(changes $\beta'$-coordinates into $\beta$-coordinates).  
+$P_2(\mathbb{R}) \xrightarrow{T} P_2(\mathbb{R})$  
   
-**Remark 1:** $Q^{-1}$: changes $\beta$ to $\beta'$ coordinates.  
+$\phi_\beta \downarrow \quad \quad \uparrow \phi_\beta^{-1}$  
   
-**Remark 2:** $\beta = \{x_1, ..., x_n\}$, $\beta' = \{x'_1, ..., x'_n\}$.  
+$\mathbb{R}^3 \xrightarrow{[T]_\beta} \mathbb{R}^3$  
   
-($j$-th column of $Q$) $= [I_V(x'_j)]_\beta = [x'_j]_\beta$.  
+### §3.3 System of linear equations  
   
-### Theorem 2.23  
+(S)  
   
-$V$ finite-dim. $T \in \mathcal{L}(V)$ (linear operator $T: V \rightarrow V$).  
+$a_{11}x_1 + \cdots + a_{1n}x_n = b_1$  
   
-$\beta, \beta'$ ordered bases.  
+$\vdots$  
   
-Let $Q = [I_V]_{\beta'}^\beta$.  
+$a_{m1}x_1 + \cdots + a_{mn}x_n = b_m$  
   
-Then **$[T]_{\beta'} = Q^{-1} [T]_\beta Q$.**  
+$m$ linear equations, $n$ unknowns over $\mathbb{F}$.  
   
-**Proof)** $[T]_{\beta'} = [T]_{\beta'}^{\beta'} = [I_V T I_V]_{\beta'}^{\beta'}$  
+$A = (a_{ij})$: coefficient matrix.  
   
-$= [I_V]_{\beta}^{\beta'} [T]_\beta^\beta [I_V]_{\beta'}^\beta$  
+$x = (x_j)^t$, $b = (b_i)^t$.  
   
-$= Q^{-1} [T]_\beta Q$.  
+$Ax = b$  
   
-**Ex.** $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ reflection about the line $y = 2x$.  
+A solution to the System (S) is $s = (s_1, \dots, s_n)^t \in \mathbb{F}^n$ s.t. $As = b$.  
   
-$T\begin{pmatrix}1\\ 2\end{pmatrix} = \begin{pmatrix}1\\ 2\end{pmatrix}$ (on the line, invariant)  
+Solution set: $K = \{ s \in \mathbb{F}^n : As = b \}$.  
   
-$T\begin{pmatrix}-2\\ 1\end{pmatrix} = -\begin{pmatrix}-2\\ 1\end{pmatrix}$ (orthogonal to line, flipped)  
+System S is consistent if the solution set is non-empty. Otherwise, it is inconsistent.  
   
-Let $\beta' = \{ \begin{pmatrix}1\\ 2\end{pmatrix}, \begin{pmatrix}-2\\ 1\end{pmatrix} \}$.  
+A system $Ax=b$ is homogeneous if $b = \vec{0}$. Otherwise non-homogeneous.  
   
-$[T]_{\beta'} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$.  
+### Thm 3.8  
   
-Let $\beta = \{ e_1, e_2 \}$ standard basis.  
+The solution set $K_H = \{ s \in \mathbb{F}^n : As = \vec{0} \}$  
   
-Wanted: $[T]_\beta$.  
+$= N(L_A)$  
   
-$[T]_\beta = Q [T]_{\beta'} Q^{-1}$ where $Q = [I]_{\beta'}^\beta = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}$.  
+Subspace of $\mathbb{F}^n$ of dimension $n - \text{rank}(L_A)$.  
   
-$Q^{-1} = \frac{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}$.  
+### Thm 3.9  
   
-(Note: $\begin{pmatrix}a&b\\ c&d\end{pmatrix}^{-1} = \frac{1}{ad-bc}\begin{pmatrix}d&-b\\ -c&a\end{pmatrix}$)  
+Dim $= n - \text{rank}(A)$.  
   
-$[T]_\beta = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{1}{5} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}$  
+$K$: the solution set of $Ax = b$.  
   
-$= \frac{1}{5} \begin{pmatrix} 1 & 2 \\ 2 & -1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}$  
+$K_H$: the solution set of $Ax = \vec{0}$ (homogeneous system corresponding to $Ax=b$).  
   
-$= \frac{1}{5} \begin{pmatrix} -3 & 4 \\ 4 & 3 \end{pmatrix}$.  
+Then for any solution to $Ax=b$,  
   
-Check: $T\begin{pmatrix}a\\ b\end{pmatrix} = \frac{1}{5} \begin{pmatrix} -3 & 4 \\ 4 & 3 \end{pmatrix} \begin{pmatrix}a\\ b\end{pmatrix}$.  
+(하나만 $s$ 찾고 $K_H$ 더해서 solution set을 찾을 수 있음)  
   
-**[Def]** $A, B \in M_{m \times n}(\mathbb{F})$.  
+$K = \{s\} + K_H = \{ s + k : k \in K_H \}$  
   
-$B$ is **similar** to $A$ if $\exists$ invertible matrix $Q$ s.t. **$B = Q^{-1} A Q$**.  
+Proof)  
   
-**Ex. (proof)** $V$ vector space of dim $n$.  
+($\subseteq$) If $w \in K$, then $Aw = b$. Also $As = b$.  
   
-$A \in M_{n \times n}(\mathbb{F})$ and $A$ is invertible.  
+$\Rightarrow A(w-s) = Aw - As = b - b = \vec{0}$.  
   
-$\exists$ ordered bases $\beta, \gamma$ of $V$ s.t. $[I_V]_\beta^\gamma = A$.
+$\therefore w-s \in K_H$.  
+  
+$\exists k \in K_H$ s.t. $w-s = k \Rightarrow w = s+k$.  
+  
+($\supseteq$) DIY.  
+  
+### Thm 3.10  
+  
+$Ax = b$: a system of $n$ linear eq. in $n$ unknowns.  
+  
+Then $A$ is invertible $\iff$ the system has exactly one solution.  
+  
+Proof)  
+  
+($\Rightarrow$) $A$ invertible $\Rightarrow A^{-1}$ exists.  
+  
+$Ax = b \Rightarrow x = A^{-1}b$ (unique solution).  
+  
+($\Leftarrow$) Suppose exactly one solution.  
+  
+$K_H = \{ \vec{0} \}$ (if there were non-zero $k \in K_H$, $s+k$ would be another solution).  
+  
+$\Rightarrow N(L_A) = \{ \vec{0} \} \Rightarrow L_A$ is injective.  
+  
+$L_A: \mathbb{F}^n \rightarrow \mathbb{F}^n$.  
+  
+$\therefore L_A$ is invertible $\Rightarrow A$ is invertible.  
+  
+### Thm 3.11  
+  
+The system is consistent $\iff \text{rank}(A) = \text{rank}(A|b)$.  
+  
+Proof) The system is consistent $\iff \exists s, As=b$  
+  
+$\iff b \in \text{Span}(\{a_1, a_2, ..., a_n\})$ ($\leftarrow$ span of column vectors)  
+  
+$\iff \text{Span}(\{a_1, ..., a_n\}) = \text{Span}(\{a_1, ..., a_n, b\})$  
+  
+(since $(a_1, ..., a_n) \begin{pmatrix} s_1 \\ \vdots \\ s_n \end{pmatrix} = b \Rightarrow b = s_1 a_1 + \dots + s_n a_n$)  
+  
+$\iff \text{rank}(A) = \text{rank}(A|b)$ (by Thm 3.5).  
+  
+Two systems of linear equations are "equivalent" if they have the same solution set.  
+  
+### Thm 3.13  
+  
+$Ax=b$: system of $m$ linear eq, $n$ unknowns.  
+  
+$C$: invertible $m \times m$ matrix.  
+  
+Then the system $(CA)x = Cb$ is equivalent to $Ax=b$.  
+  
+Proof)  
+  
+$K = \{ x \in \mathbb{F}^n : Ax=b \}$  
+  
+$K' = \{ x \in \mathbb{F}^n : (CA)x=Cb \}$  
+  
+Claim: $K = K'$.  
+  
+1. $K \subseteq K'$ (Clear: $Ax=b \Rightarrow C(Ax)=Cb \Rightarrow (CA)x=Cb$)  
+      
+2. $K' \subseteq K$:  
+      
+    If $w \in K'$, $(CA)w = Cb$.  
+      
+    Multiply by $C^{-1}$: $C^{-1}(CA)w = C^{-1}Cb \Rightarrow Aw = b$.  
+      
+    $\therefore w \in K$.  
+      
+  
+Coro.  
+  
+$Ax=b$.  
+  
+If $(A|b) \sim (A'|b')$ by a finite number of elementary row operations,  
+  
+then $A'x=b'$ is equivalent to $Ax=b$.  
+  
+Proof)  
+  
+$E_p \cdots E_1 (A|b) = (A'|b')$.  
+  
+$E_p \cdots E_1$ is an invertible matrix $C$.  
+  
+So $(CA|Cb) = (A'|b')$.  
+  
+By Thm 3.13, equivalent.  
+  
+Ex:  
+  
+$3x_1 + 2x_2 + 3x_3 - 2x_4 = 1$  
+  
+$x_1 + x_2 + x_3 = 3$  
+  
+$x_1 + 2x_2 + x_3 - x_4 = 2$  
+  
+$(\begin{matrix}3&2&3&-2&1\\ 1&1&1&0&3\\ 1&2&1&-1&2\end{matrix}) \xrightarrow[\text{elementary row ops}]{\text{forward pass}} (\begin{matrix}1&2&1&-1&.\\ 0&1&.&.&.\\ 0&0&.&.&1\end{matrix}) \xrightarrow[\text{Gaussian Elimination}]{\text{backward pass}} (\begin{matrix}1&0&1&0&1\\ 0&1&0&0&2\\ 0&0&0&1&3\end{matrix})$  
+  
+(1 이외엔 Zero)  
+  
+(a) Any row containing a nonzero entry precedes any row in which all the entries are zero.  
+  
+(b) The first nonzero entry in each row is the only nonzero entry in its column.  
+  
+(c) The first nonzero entry in each row is 1, it occurs in a column to the right of the first nonzero entry in the preceding row.  
+  
+$\Rightarrow$ A matrix is in reduced row echelon form.  
+  
+### Thm 3.14  
+  
+Gaussian elimination transforms any matrix into its reduced row echelon form.  
+  
+$x_1 + x_3 = 1$  
+  
+$x_2 = 2$  
+  
+$x_4 = 3$  
+  
+Let $x_3 = t$.  
+  
+$\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} 1-t \\ 2 \\ t \\ 3 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 0 \\ 3 \end{pmatrix} + t \begin{pmatrix} -1 \\ 0 \\ 1 \\ 0 \end{pmatrix}$.  
+  
+$\begin{pmatrix} -1 \\ 0 \\ 1 \\ 0 \end{pmatrix}$ is a basis for the corresponding homo. system ($Ax=0$).  
+  
+Ex: $(A|b) \sim \begin{pmatrix} 1&0&2&0&-2&3\\ 0&1&-1&0&1&-1\\ 0&0&0&1&-2&2\\ 0&0&0&0&0&0 \end{pmatrix}$  
+  
+$\Rightarrow x_1 + 2x_3 - 2x_5 = 3$  
+  
+$x_2 - x_3 + x_5 = -1$  
+  
+$x_4 - 2x_5 = 2$  
+  
+(Variables with pivots: $x_1, x_2, x_4$. Free variables: $x_3=t_1, x_5=t_2$)  
+  
+$\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} -2t_1 + 2t_2 + 3 \\ t_1 - t_2 - 1 \\ t_1 \\ 2t_2 + 2 \\ t_2 \end{pmatrix} = \begin{pmatrix} 3 \\ -1 \\ 0 \\ 2 \\ 0 \end{pmatrix} + t_1 \begin{pmatrix} -2 \\ 1 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} 2 \\ -1 \\ 0 \\ 2 \\ 1 \end{pmatrix}$.  
+  
+Note: $\{ \begin{pmatrix} -2 \\ 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 2 \\ -1 \\ 0 \\ 2 \\ 1 \end{pmatrix} \}$ is a basis for the solution set of homogeneous system.1  
+  
+$\begin{pmatrix} 3 \\ -1 \\ 0 \\ 2 \\ 0 \end{pmatrix} \leftarrow$ particular solution.2  
+  
+**Note:** Solutions exist $\iff$ In the reduced row echelon form we do not obtain the following $\rightarrow (\begin{matrix} * & * \\ 0 \cdots 0 & 1 \end{matrix})$.  
+  
+### Thm 3.15  
+  
+$Ax=b$, $r$: nonzero equations in $n$ unknowns.  
+  
+$\text{rank}(A) = \text{rank}(A|b)$ (has solution, consistent!)  
+  
+& $(A|b)$ is in reduced row echelon form.  
+  
+It expresses an arbitrary solution $s$ of $Ax=b$ in terms of $n-r$ parameters.  
+  
+$s = s_0 + t_1 u_1 + \cdots + t_{n-r} u_{n-r}$.  
+  
+(a) $\text{rank}(A) = r$.  
+  
+(b) If the general solution is of the form $s = s_0 + t_1 u_1 + \cdots + t_{n-r} u_{n-r}$, then $\{u_1, ..., u_{n-r}\}$ is a basis for the system $Ax=0$ and $s_0$ is a solution to the original system.  
+  
+Proof)  
+  
+$s_0 \in K = \{ x | Ax=b \}$  
+  
+$K_H = \{ x | Ax=0 \}$  
+  
+We know $K = \{s_0\} + K_H$.  
+  
+$\therefore K_H = K - \{s_0\} = t_1 u_1 + \cdots + t_{n-r} u_{n-r} = \text{Span}(\{u_1, \dots, u_{n-r}\})$.  
+  
+Because $\dim(K_H) = \dim N(L_A) = n - \dim(R(L_A)) = n - r$.  
+  
+(Basis size must be $n-r$).  
+  
+$(\begin{matrix} 2 & 3 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{matrix}) \begin{matrix} 4 & -9 & 17 \\ 1 & -3 & 6 \\ 2 & -5 & 8 \end{matrix}$  
+  
+$\downarrow$  
+  
+$(\begin{matrix} 1 & 0 & 2 & 0 & -2 & 3 \\ 0 & 1 & -1 & 0 & -1 & 2 \\ 0 & 0 & 0 & 1 & -2 & 2 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{matrix})$  
+  
+(쉽게 l-dep 여부와 rank 판별가능)  
+  
+$A$: $m \times n$ matrix with columns $a_1, ..., a_n$. $A = (a_1 \cdots a_n)$.  
+  
+$B$: reduced row echelon form of $A$. $B = (b_1 \cdots b_n)$.  
+  
+$\text{rank}(A) = r = \text{rank}(B)$.  
+  
+$B = (\begin{matrix} 1 & * & 0 & * & 0 \\ 0 & \cdots & 1 & \cdots & 0 \\ \vdots & & \vdots & & 1 \\ 0 & \cdots & 0 & \cdots & 0 \end{matrix}) \} \to \text{rank}$.  
+  
+Columns: $b_1, b_2, b_3, \dots$.  
+  
+So $e_1, ..., e_r$ must occur among the columns of $B$.  
+  
+Let $b_{j_k} = e_k$.  
+  
+Then $a_{j_1}, ..., a_{j_r}$ are linearly independent.  
+  
+($\hookrightarrow$ corresponding columns of A).  
+  
+Why? $B = MA$ where $M$ is invertible ($E_p \cdots E_1$).  
+  
+Then $M a_{j_1}, ..., M a_{j_r}$  
+  
+$\downarrow \quad \quad \quad \quad \downarrow$  
+  
+$e_1 \quad \dots \quad e_r$ (l-indep).  
+  
+Apply $M^{-1} \rightarrow a_{j_1}, ..., a_{j_r}$ l-indep.  
+  
+A column of $B$ has the form $\begin{pmatrix} d_1 \\ \vdots \\ d_r \\ 0 \\ \vdots \end{pmatrix} = d_1 e_1 + \cdots + d_r e_r$.  
+  
+Apply $M^{-1} \rightarrow$ $M^{-1} \begin{pmatrix} \vdots \end{pmatrix} = d_1 a_{j_1} + \cdots + d_r a_{j_r}$.  
+  
+LHS is corresponding column of A.  
+  
+**Corollary.** Reduced row echelon form of a matrix is **unique**.  
+  
+$A = \begin{pmatrix} * & \dots \\ * & \\ \vdots & \\ * & \end{pmatrix}$  
+  
+nonzero? zeros?  
+  
+2번째 column이...  
+  
+$\rightarrow$ l-indep $B = \begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 0 & 0 \end{pmatrix}$  
+  
+$\rightarrow$ l-dep $B = \begin{pmatrix} 1 & 2 \\ 0 & 0 \\ 0 & 0 \end{pmatrix}$  
+  
+(A의 첫 column들로 B 결정가능)  
+  
+즉, column끼리 l-indep이면 B도 l-indep이다.  
+  
+A에 따라 B가 결정되고, 이 idea로 증명하자.  
+  
+Proof)  
+  
+$A \in M_{m \times n}(\mathbb{F})$.  
+  
+$\rightarrow$ Induction on $n$.  
+  
+i) $n=1$. $A = \begin{pmatrix} A_{11} \\ \vdots \\ A_{m1} \end{pmatrix}$. $B = \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$ or $\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$.  
+  
+ii) $n > 1$. column vector.  
+  
+$A = (a_1 \ a_2 \ \dots \ a_{n-1} \ a_n)$  
+  
+$B = (b_1 \ b_2 \ \dots \ b_{n-1} \ b_n)$  
+  
+$A' = (a_1 \ \dots \ a_{n-1})$  
+  
+$B' = (b_1 \ \dots \ b_{n-1})$ ($B'$ is reduced row echelon form of $A'$).  
+  
+$B'$ is determined by $A'$. Unique by induction hyp.  
+  
+$\Rightarrow$ Show $b_n$ is determined by $A_n$.  
+  
+$A = (A' | a_n)$  
+  
+$B = (B' | b_n)$  
+  
+$\{ x \in \mathbb{F}^n : A'x = a_n \} = \{ x \in \mathbb{F}^n : B'x = b_n \}$  
+  
+($B=MA$, $M$ invertible, solution sets must be same).  
+  
+1. $A'x = a_n$ is inconsistent.  
+      
+    $B'x = b_n$ is inconsistent.  
+      
+    ex) $b_n = \begin{pmatrix} 0 \\ \vdots \\ 1 \\ \vdots \end{pmatrix}$. $\therefore B' = \begin{pmatrix} 1 & * & 0 & * \\ 0 & \dots & 0 & 0 \\ & & \end{pmatrix} \begin{pmatrix} * \\ * \\ 1 \\ 0 \end{pmatrix}$  
+      
+    ($r'+1$) entry, where $r'$ is the rank of $A'$.  
+      
+2. $\exists x_0 \in \mathbb{F}^n$ s.t. $A' x_0 = a_n$  
+      
+    $\Rightarrow B' x_0 = b_n$.  
+      
+    $b_n$ is determined by $A$ and $B'$.  
+      
+  
+Ex:  
+  
+$S = \{ 2+x+2x^2+3x^3, 4+2x+4x^2+6x^3, 6+3x+8x^2+7x^3, 2x+5x^3, 4+x+9x^3 \}$  
+  
+generates a subspace $V$ of $P_3(\mathbb{R})$.  
+  
+Find a subset of $S$ that is a basis for $V$.  
+  
+Proof)  
+  
+$\beta: \{1, x, x^2, x^3\}$, $P_3(\mathbb{R}) \rightarrow \mathbb{R}^4$, $f(x) \mapsto [f(x)]_\beta$.  
+  
+$A = \begin{pmatrix} 2 & 4 & 6 & 0 & 4 \\ 1 & 2 & 3 & 2 & 1 \\ 2 & 4 & 8 & 0 & 0 \\ 3 & 6 & 7 & 5 & 9 \end{pmatrix} \sim B = \begin{pmatrix} 1 & 2 & 0 & 4 & 0 \\ 0 & 0 & 1 & -1 & 0 \\ 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 \end{pmatrix}$  
+  
+(Pivots at col 1, 3, 5 $\rightarrow$ l-indep).  
+  
+$V \rightarrow \phi_\beta(V)$.  
+  
+$\{a_1, a_3, a_5\}$ is a basis for $\phi_\beta(V)$.  
+  
+$\phi_\beta^{-1}\{a_1, a_3, a_5\}$ is a basis for $V$.  
+  
+$= \{f_1, f_3, f_5\}$.  
+  
+Ex:  
+  
+$V = \{ (x_1, ..., x_5) \in \mathbb{F}^5 : x_1 + 7x_2 + 5x_3 - 4x_4 + 2x_5 = 0 \}$  
+  
+$S = \{ (-2, 0, 0, -1, -1), (1, 1, -2, -1, -1), (-5, 1, 0, 1, 1) \}$  
+  
+is linearly indep subset of $V$.  
+  
+Extend $S$ to a basis for $V$. (근데 어떻게 extend 하지?)  
+  
+$\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_5 \end{pmatrix} = \begin{pmatrix} -7t_1 - 5t_2 + 4t_3 - 2t_4 \\ t_1 \\ t_2 \\ t_3 \\ t_4 \end{pmatrix} = t_1 \begin{pmatrix} -7 \\ 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} + t_2 \begin{pmatrix} -5 \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + t_3 \begin{pmatrix} 4 \\ 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} + t_4 \begin{pmatrix} -2 \\ 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}$  
+  
+Basis for $V$.  
+  
+$A = \begin{pmatrix} -2 & 1 & -5 & -7 & -5 & 4 & -2 \\ 0 & 1 & 1 & 1 & 0 & 0 & 0 \\ 0 & -2 & 0 & 0 & 1 & 0 & 0 \\ -1 & -1 & 1 & 0 & 0 & 1 & 0 \\ -1 & -1 & 1 & 0 & 0 & 0 & 1 \end{pmatrix} \sim B \begin{pmatrix} 1 & 0 & 0 & 1 & 1 & 0 & -1 \\ 0 & 1 & 0 & -\frac{1}{2} & 0 & 0 & 0 \\ 0 & 0 & 1 & -\frac{1}{2} & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 \end{pmatrix}$  
+  
+$\rightarrow \{a_1, a_2, a_3, a_5\}$ is a basis for $V$.
