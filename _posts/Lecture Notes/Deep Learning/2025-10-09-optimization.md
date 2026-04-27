@@ -13,6 +13,7 @@ date: 2025-10-09
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # 1. Gradient-based Optimization  
   

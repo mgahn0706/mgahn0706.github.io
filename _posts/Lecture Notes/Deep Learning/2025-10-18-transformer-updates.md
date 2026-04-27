@@ -12,6 +12,7 @@ date: 2025-10-18
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # 1. Attention Bottleneck & Solutions  
   

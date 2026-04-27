@@ -12,6 +12,7 @@ date: 2025-10-13
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # 1. RNN (Recurrent Neural Networks)  
   
