@@ -10,6 +10,7 @@ date: 2025-12-01
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # Recall: Deep Generative Models  
   
