@@ -10,6 +10,7 @@ date: 2025-12-07
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # Pretraining  
   
