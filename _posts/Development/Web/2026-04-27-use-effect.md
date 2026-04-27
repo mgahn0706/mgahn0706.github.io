@@ -4,7 +4,7 @@ tags:
   - hook  
 share: "true"  
 github_title: 2026-04-27-use-effect  
-title: useEffect  
+title: useEffect 실수 바로잡기  
 date: 2026-04-27  
 categories:  
   - Development  
