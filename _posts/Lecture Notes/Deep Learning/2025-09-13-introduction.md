@@ -11,6 +11,7 @@ date: 2025-09-13
 categories:  
   - Lecture Notes  
   - Deep Learning  
+math: "true"  
 ---  
 # I. intro.  
   
